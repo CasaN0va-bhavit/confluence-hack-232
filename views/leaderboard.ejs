@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard</title>
+</head>
+<body>
+    Leaderboard:
+    <% var flag = false %>
+    <% for (let i = 0; i < leaderboardList.length; i++) { %>
+        <p><%= leaderboardList[i].fname %> <%= leaderboardList[i].lname %> </p>
+        <p><%= leaderboardList[i].score %></p>
+        <% flag = true %>
+    <% } %>
+    <% if(!flag) { %>
+        <p>There's no in the leaderboard at this moment</p>
+    <% } %>
+
+</body>
+</html>

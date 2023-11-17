@@ -13,6 +13,11 @@ const userSchema = new Schema(
             type: Date,
             required: true,
             default: Date.now
+        },
+        score: {
+            type: Number,
+            required: true,
+            default: 0
         }
     }
 );

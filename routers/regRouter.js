@@ -26,6 +26,11 @@ router.post('/', async (req, res) => {
     await newUser.save()
     console.log(`ACCOUNT CREATED`)
     res.redirect('/')
-})
+});
+
+router.get('/logout', (req, res) => {
+    req.logout();
+    res.redirect('/login');
+});
 
 module.exports = router
