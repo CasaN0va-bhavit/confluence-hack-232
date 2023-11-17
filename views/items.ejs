@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <style>
+        .box {
+            border: 5px solid #000;
+            padding: 10px;
+            margin-right: 20px;
+            display: inline-block;
+            margin-bottom: 20px;
+            width: 20%;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p style="text-align: center;">AramCoins: <%= user.coins %></p>
+    </div>
+    <div class="box">
+        <h2>Power Up 1</h2>
+        <p>Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet</p>
+        <form action="/items/1" method="POST">
+            <input type="submit" value="Buy For 50 Coins">
+        </form>
+    </div>
+    <div class="box">
+        <h2>Power Up 2</h2>
+        <p>Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet</p>
+        <form action="/items/2" method="POST">
+            <input type="submit" value="Buy For 50 Coins">
+        </form>
+    </div>
+    <div class="box">
+        <h2>Power Up 3</h2>
+        <p>Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet</p>
+        <form action="/items/3" method="POST">
+            <input type="submit" value="Buy For 50 Coins">
+        </form>
+    </div>
+    <div class="box">
+        <h2>Power Up 4</h2>
+        <p>Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet</p>
+        <form action="/items/4" method="POST">
+            <input type="submit" value="Buy For 50 Coins">
+        </form>
+    </div>
+</body>
+</html>
