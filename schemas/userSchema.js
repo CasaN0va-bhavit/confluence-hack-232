@@ -19,6 +19,16 @@ const userSchema = new Schema(
             required: true,
             default: 0
         },
+        coins: {
+            type: Number,
+            required: true,
+            default: 0
+        },
+        coins: {
+            type: Number,
+            required: true,
+            default: 0
+        },
         admin: {
             type: Boolean,
             required: true,
