@@ -1,0 +1,23 @@
+<p><%= submission.username %></p>
+<p><%= submission.submissionLink %></p>
+<p><%= submission.gdLink %></p>
+<% if (submission.images) { %>
+    <p><%= submission.images %></p>
+<% } %>
+<% if (submission.rank) { %>
+    <p><%= submission.rank %></p>
+<% } %>
+
+
+
+
+<form action="/admin/rank/<%= submission.id %>" method="post">
+    <label for="ranks">Choose a rank:</label>
+    <select name="ranks" id="ranks">
+        <option value="first">first</option>
+        <option value="second">second</option>
+        <option value="third">third</option>
+    </select>
+    <br><br>
+    <input type="submit" value="Submit">
+</form>
