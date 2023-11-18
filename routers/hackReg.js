@@ -17,11 +17,13 @@ router.get('/', async (req,res) => {
 
 router.post('/create-team', async (req,res) => {
     const {teamName,  participant1} = req.body
-    if (req.body.participant2 !== undefined || req.body.participant2 !== "") {
+    if (req.body.participant4 !== undefined || req.body.participant4 !== "") {
         const newTeam = new teams({
             teamName: teamName,
             participant1: participant1,
-            participant2: req.body.participant2
+            participant2: req.body.participant2,
+            participant3: req.body.participant3,
+            participant4: req.body.participant4
         });
         await newTeam.save();
     }
@@ -34,16 +36,15 @@ router.post('/create-team', async (req,res) => {
         });
         await newTeam.save();
     }
-    else if (req.body.participant4 !== undefined || req.body.participant4 !== "") {
+    else if (req.body.participant2 !== undefined || req.body.participant2 !== "") {
         const newTeam = new teams({
             teamName: teamName,
             participant1: participant1,
-            participant2: req.body.participant2,
-            participant3: req.body.participant3,
-            participant4: req.body.participant4
+            participant2: req.body.participant2
         });
         await newTeam.save();
-    } else {
+    }
+    else if (req.body.participant1 !== undefined || req.body.participant1 !== "") {
         const newTeam = new teams({
             teamName: teamName,
             participant1: participant1
