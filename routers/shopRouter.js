@@ -24,6 +24,7 @@ router.post('/:id', async (req, res) => {
             })
             console.log(await User.findOne({username: req.user.username}))
             console.log("BOUGHT POWER UP 1")
+            res.redirect('/items')
             break;
         case '2':
             console.log('Initializing Buy Power Up 2')
@@ -39,8 +40,9 @@ router.post('/:id', async (req, res) => {
             })
             console.log(await User.findOne({username: req.user.username}))
             console.log("BOUGHT POWER UP 2")
+            res.redirect('/items')
             break;
-        case '3':
+            case '3':
             console.log('Initializing Buy Power Up 3')
             currentItems.push('powerup3')
             if (currentCoins < 50) {
@@ -54,6 +56,7 @@ router.post('/:id', async (req, res) => {
             })
             console.log(await User.findOne({username: req.user.username}))
             console.log("BOUGHT POWER UP 3")
+            res.redirect('/items')
             break;
         case '4':
             console.log('Initializing Buy Power Up 4')
@@ -69,6 +72,7 @@ router.post('/:id', async (req, res) => {
             })
             console.log(await User.findOne({username: req.user.username}))
             console.log("BOUGHT POWER UP 4")
+            res.redirect('/items')
             break;
     }
 })

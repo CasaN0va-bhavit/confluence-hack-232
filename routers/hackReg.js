@@ -8,12 +8,16 @@ router.get('/', async (req,res) => {
     var reqTeam;
     console.log(req.user.username)
     for (let i = 0; i < allTeams.length; i++) {
-        if (req.user.username === allTeams[i].participant1 || req.user.username === allTeams[i].participant2 || req.user.username === allTeams[i].participant3 || req.user.username === allTeams[i].participant4) {
+        if (req.user.username === allTeams[i].participant1 || req.user.username === allTeams[i].participant2 || req.user.username === allTeams[i].participant3 || req.user.username === allTeams[i].participant4 || req.user.username === allTeams[i].teamAdmin) {
             canReg = false
             reqTeam = allTeams[i]
         }
     }
-    res.render('hackReg', {canReg: canReg, user: req.user, reqTeam: reqTeam, error: ""});
+    var canEdit;
+    if (req.user.email === reqTeam.teamAdmin) {
+        canEdit = true;
+    }
+    res.render('hackReg', {canReg: canReg, user: req.user, reqTeam: reqTeam, error: "", canEdit: canEdit});
 });
 
 router.post('/create-team', async (req,res) => {
@@ -48,7 +52,7 @@ router.post('/create-team', async (req,res) => {
         await someFunction(participant1)
         console.log("This is the error: " + error)
         if (error.length > 0) {
-            return res.render('hackReg', {canReg: true, user: req.user, reqTeam: false, error: error})
+            return res.render('hackReg', {canReg: true, user: req.user, reqTeam: false, error: error, canEdit: true})
         } else {
             const newTeam = new teams({
                 teamName: teamName,
@@ -69,7 +73,7 @@ router.post('/create-team', async (req,res) => {
         await someFunction(participant1)
         console.log("This is the error: " + error)
         if (error.length > 0) {
-            return res.render('hackReg', {canReg: true, user: req.user, reqTeam: false, error: error})
+            return res.render('hackReg', {canReg: true, user: req.user, reqTeam: false, error: error, canEdit: true})
         } else {
             const newTeam = new teams({
                 teamName: teamName,
@@ -88,7 +92,7 @@ router.post('/create-team', async (req,res) => {
         await someFunction(participant1)
         console.log("This is the error: " + error)
         if (error.length > 0) {
-            return res.render('hackReg', {canReg: true, user: req.user, reqTeam: false, error: error})
+            return res.render('hackReg', {canReg: true, user: req.user, reqTeam: false, error: error, canEdit: true})
         } else {
             const newTeam = new teams({
                 teamName: teamName,
@@ -105,7 +109,7 @@ router.post('/create-team', async (req,res) => {
         await someFunction(req.body.participant1)
         console.log("This is the error: " + error)
         if (error.length > 0) {
-            return res.render('hackReg', {canReg: true, user: req.user, reqTeam: false, error: error})
+            return res.render('hackReg', {canReg: true, user: req.user, reqTeam: false, error: error, canEdit: true})
         } else {
             const newTeam = new teams({
                 teamName: teamName,
@@ -116,7 +120,7 @@ router.post('/create-team', async (req,res) => {
             res.redirect('/hackReg')
         }
     } else {
-        res.render('hackReg', {canReg: true, user: req.user, reqTeam: false, error: "Please enter a participant"});
+        res.render('hackReg', {canReg: true, user: req.user, reqTeam: false, error: "Please enter a participant", canEdit: true});
     }
 });
 

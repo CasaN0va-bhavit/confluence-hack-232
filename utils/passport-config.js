@@ -32,7 +32,7 @@ module.exports = function passportInit(passport) {
             const user = await User.findById(id)
             done(null, user)
         } catch (err) {
-            res.send(err)
+            console.log(err)
         }
-    }); 
+    });
 }

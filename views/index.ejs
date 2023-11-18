@@ -36,7 +36,9 @@
         </ul>
     </header>
     <h1 class="heading">ADAM SMASHER</h1>
+    <p class="coords" id="coords"></p>
     <div class="rectangle" id="rectangle"></div>
+    <div class="rectangle2" id="rectangle2"></div>
     <!-- <marquee style="color: white; position: fixed; bottom: 0px; font-family: BlenderProBook; opacity: 0.7;">LATEST NEWS - Night city is being robbed by Bhavit Grover, this notorious criminal is known online as CasaN0va or whatever the fuck he wants to name himself. Apart from that, there is a guy called Shyamak who has lost all his hair and wants revenge. He has begun his hunt for Arasaka Executives to feed his lust for beautiful individuals. </marquee> -->
 </body>
 
@@ -49,7 +51,20 @@
         left: 1.57vw;
         background: red;
     }
-    
+    .coords {
+        font-family: BlenderProBook;
+        color: #f00;
+        margin-top: 2.6vw;
+        margin-left: 87.5vw;
+        font-size: 0.8em;
+    }
+    .rectangle2 {
+        width: 20px;
+        height: 10px;
+        background: red;
+        margin-top: 0.5vw;
+        margin-left: 26vw;
+    }
     @font-face 
     {
         font-family:BlenderProBook;
@@ -335,15 +350,24 @@
     }
     document.addEventListener('mousemove', function(event) {
         if (event.pageY < 30 || event.pageY > screen.height - 115) return;
+        var kuchhBhi = (event.pageX / screen.width) * 100
+        if (kuchhBhi < 14 || kuchhBhi > 88.5) return;
         // console.log(screen.height)
         const styles = {
             top: `${event.pageY}px`
         }
+        const styles2 = {
+            marginLeft: `${event.pageX}px`
+        }
         const styleTiming = {
             duration: 1500
         }
+        console.log(screen.width, kuchhBhi)
         document.getElementById('rectangle').animate(styles, styleTiming)
         document.getElementById('rectangle').style.top = event.pageY + 'px';
+        document.getElementById('rectangle2').animate(styles2, styleTiming)
+        document.getElementById('rectangle2').style.marginLeft = event.pageX + 'px';
+        document.getElementById('coords').innerHTML = `${event.pageX}, ${event.pageY}`
     })
 </script>
 </html>
