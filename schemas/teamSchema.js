@@ -6,6 +6,7 @@ const nonReqString = { type: String, required: false };
 const teamSchema = new Schema(
     {
         teamName: reqString,
+        teamAdmin: reqString,
         participant1: reqString,
         participant2: nonReqString,
         participant3: nonReqString,

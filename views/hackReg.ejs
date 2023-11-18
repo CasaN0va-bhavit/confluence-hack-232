@@ -15,7 +15,10 @@
             <input type="email" name="participant2" placeholder="leave blank if empty">
             <input type="email" name="participant3" placeholder="leave blank if empty">
             <input type="email" name="participant4" placeholder="leave blank if empty">
-            <button type="submit">Create Team</button>
+            <button type="submit">Create Team</button><br>
+            <% if (error) { %>
+            <%= error %>
+            <% } %>
         </form>
     <% } else { %>
         <p>Edit your team:</p>
