@@ -7,7 +7,8 @@ const express = require('express'),
     flash = require('express-flash'),
     session = require('cookie-session'),
     PORT = process.env.PORT || 5000,
-    passportInit = require('./utils/passport-config')
+    passportInit = require('./utils/passport-config'),
+    {ensureAuthenticated, forwardAuthenticated} = require('./utils/authenticate')
 
 const indexRouter = require('./routers/indexRouter'),
     regRouter = require('./routers/regRouter')
@@ -17,7 +18,8 @@ const indexRouter = require('./routers/indexRouter'),
     adminRouter = require('./routers/adminRouter')
     hackSubRouter = require('./routers/hackSubRouter'),
     itemsRouter = require('./routers/shopRouter'),
-    hackRegRouter = require('./routers/hackReg')
+    hackRegRouter = require('./routers/hackReg'),
+    logoutRouter = require('./routers/logoutRouter')
 
 mongoose.connect(process.env.MONGO_URI, console.log('MONGODB CONNECTED'))
 
@@ -38,13 +40,14 @@ passportInit(passport)
 
 
 app.use('/', indexRouter)
-app.use('/login', loginRouter)
-app.use('/register', regRouter)
-app.use('/dashboard', dashboardRouter)
-app.use('/leaderboard', leaderboardRouter)
-app.use('/admin', adminRouter)
-app.use('/hack', hackSubRouter)
-app.use('/items', itemsRouter)
-app.use('/hackReg', hackRegRouter)
+app.use('/login', forwardAuthenticated, loginRouter)
+app.use('/register', forwardAuthenticated, regRouter)
+app.use('/dashboard', ensureAuthenticated, dashboardRouter)
+app.use('/leaderboard', ensureAuthenticated, leaderboardRouter)
+app.use('/admin', ensureAuthenticated, adminRouter)
+app.use('/hack', ensureAuthenticated, hackSubRouter)
+app.use('/items', ensureAuthenticated, itemsRouter)
+app.use('/hackReg', ensureAuthenticated, hackRegRouter)
+app.use('/logout', ensureAuthenticated, logoutRouter)
 
 app.listen(PORT, console.log(`SERVER CONNECTED ON PORT ${PORT}`))
