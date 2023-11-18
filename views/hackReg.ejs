@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register for Hackathon</title>
+</head>
+<body>
+    <% if (canReg) { %>
+        Create your team:
+        <form action="/hackReg/create-team" method="post">
+            <input type="text" name="teamName" placeholder="team name" id="">
+            <input type="email" name="participant1" placeholder="enter email of participant 1">
+            <input type="email" name="participant2" placeholder="leave blank if empty">
+            <input type="email" name="participant3" placeholder="leave blank if empty">
+            <input type="email" name="participant4" placeholder="leave blank if empty">
+            <button type="submit">Create Team</button>
+        </form>
+    <% } else { %>
+        <p>You cannot create more than one team</p>
+    <% } %>
+</body>
+</html>

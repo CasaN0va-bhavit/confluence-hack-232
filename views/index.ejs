@@ -6,6 +6,7 @@
     <title>Home</title>
 </head>
 <body>
+    <img src="./Macbook Air - 1.png" class="bg-img" alt="">
     <header class="nav">
         <div class="logo">
             <svg class="logo-img" xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none">
@@ -35,9 +36,8 @@
         </ul>
     </header>
     <h1 class="heading">ADAM SMASHER</h1>
-    <img src="./Menu_Expanded.png" class="bg-img" alt="">
     <div class="rectangle" id="rectangle"></div>
-    <marquee style="color: white; position: fixed; bottom: 0px; font-family: BlenderProBook; opacity: 0.7;">LATEST NEWS - Night city is being robbed by Bhavit Grover, this notorious criminal is known online as CasaN0va or whatever the fuck he wants to name himself. Apart from that, there is a guy called Shyamak who has lost all his hair and wants revenge. He has begun his hunt for Arasaka Executives to feed his lust for beautiful individuals. </marquee>
+    <!-- <marquee style="color: white; position: fixed; bottom: 0px; font-family: BlenderProBook; opacity: 0.7;">LATEST NEWS - Night city is being robbed by Bhavit Grover, this notorious criminal is known online as CasaN0va or whatever the fuck he wants to name himself. Apart from that, there is a guy called Shyamak who has lost all his hair and wants revenge. He has begun his hunt for Arasaka Executives to feed his lust for beautiful individuals. </marquee> -->
 </body>
 
 <style>
@@ -46,29 +46,10 @@
         width: 10px;
         position: absolute;
         top: 70vh;
-        left: 1.64vw;
+        left: 1.57vw;
         background: red;
     }
-    :root {
-        --button-clip-1: polygon(0 2%, 100% 2%, 100% 95%, 95% 95%, 95% 90%, 85% 90%, 85% 95%, 8% 95%, 0 70%);
-        --button-clip-2: polygon(0 78%, 100% 78%, 100% 100%, 95% 100%, 95% 90%, 85% 90%, 85% 100%, 8% 100%, 0 78%);
-        --button-clip-3: polygon(0 44%, 100% 44%, 100% 54%, 95% 54%, 95% 54%, 85% 54%, 85% 54%, 8% 54%, 0 54%);
-        --button-clip-4: polygon(0 0, 100% 0, 100% 0, 95% 0, 95% 0, 85% 0, 85% 0, 8% 0, 0 0);
-        --button-clip-5: polygon(0 0, 100% 0, 100% 0, 95% 0, 95% 0, 85% 0, 85% 0, 8% 0, 0 0);
-        --button-clip-6: polygon(0 40%, 100% 40%, 100% 85%, 95% 85%, 95% 85%, 85% 85%, 85% 85%, 8% 85%, 0 70%);
-        --button-clip-7: polygon(0 63%, 100% 63%, 100% 80%, 95% 80%, 95% 80%, 85% 80%, 85% 80%, 8% 80%, 0 70%);
-
-        --button-clip: polygon(0 0, 100% 0, 100% 100%, 95% 100%, 95% 90%, 80% 90%, 80% 100%, var(--button-cutout) 100%, 0 calc(100% - var(--button-cutout)));
-        --button-cutout: 1.1rem;
-        --button-shimmy-distance: 5;
-        --tile-width: 360px;
-        --tile-padding: 4px;
-        --tile-edges: 20px;
-        --label-margins: calc(var(--tile-edges) - var(--tile-padding));
-        --og-clip-path: polygon(0 0, 0 calc(100% - var(--tile-edges)), var(--tile-edges) 100%, 100% 100%, 100% var(--tile-edges), calc(100% - var(--tile-edges)) 0);
-        --yellow: #f8ef02;
-        --cyan: #00ffd2;
-    }
+    
     @font-face 
     {
         font-family:BlenderProBook;
@@ -89,7 +70,7 @@
     }
     body {
         width: 100vw;
-        /* height: 100vh; */
+        height: auto;
         margin: 0;
         padding: 0;
         overflow-x: hidden;
@@ -230,138 +211,139 @@
 <script>
     const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-let interval = null;
+    let interval = null;
 
-document.getElementById("special").onmouseover = event => {  
-  let iteration = 0;
-  
-  clearInterval(interval);
-  
-  interval = setInterval(() => {
-    event.target.innerText = event.target.innerText
-      .split("")
-      .map((letter, index) => {
-        if(index < iteration) {
-          return event.target.dataset.value[index];
+    document.getElementById("special").onmouseover = event => {  
+    let iteration = 0;
+    
+    clearInterval(interval);
+    
+    interval = setInterval(() => {
+        event.target.innerText = event.target.innerText
+        .split("")
+        .map((letter, index) => {
+            if(index < iteration) {
+            return event.target.dataset.value[index];
+            }
+        
+            return letters[Math.floor(Math.random() * 26)]
+        })
+        .join("");
+        
+        if(iteration >= event.target.dataset.value.length){ 
+        clearInterval(interval);
         }
-      
-        return letters[Math.floor(Math.random() * 26)]
-      })
-      .join("");
-    
-    if(iteration >= event.target.dataset.value.length){ 
-      clearInterval(interval);
+        
+        iteration += 1 / 3;
+    }, 30);
     }
+    document.getElementById("special2").onmouseover = event => {  
+    let iteration = 0;
     
-    iteration += 1 / 3;
-  }, 30);
-}
-document.getElementById("special2").onmouseover = event => {  
-  let iteration = 0;
-  
-  clearInterval(interval);
-  
-  interval = setInterval(() => {
-    event.target.innerText = event.target.innerText
-      .split("")
-      .map((letter, index) => {
-        if(index < iteration) {
-          return event.target.dataset.value[index];
+    clearInterval(interval);
+    
+    interval = setInterval(() => {
+        event.target.innerText = event.target.innerText
+        .split("")
+        .map((letter, index) => {
+            if(index < iteration) {
+            return event.target.dataset.value[index];
+            }
+        
+            return letters[Math.floor(Math.random() * 26)]
+        })
+        .join("");
+        
+        if(iteration >= event.target.dataset.value.length){ 
+        clearInterval(interval);
         }
-      
-        return letters[Math.floor(Math.random() * 26)]
-      })
-      .join("");
-    
-    if(iteration >= event.target.dataset.value.length){ 
-      clearInterval(interval);
+        
+        iteration += 1 / 3;
+    }, 30);
     }
+    document.getElementById("special3").onmouseover = event => {  
+    let iteration = 0;
     
-    iteration += 1 / 3;
-  }, 30);
-}
-document.getElementById("special3").onmouseover = event => {  
-  let iteration = 0;
-  
-  clearInterval(interval);
-  
-  interval = setInterval(() => {
-    event.target.innerText = event.target.innerText
-      .split("")
-      .map((letter, index) => {
-        if(index < iteration) {
-          return event.target.dataset.value[index];
+    clearInterval(interval);
+    
+    interval = setInterval(() => {
+        event.target.innerText = event.target.innerText
+        .split("")
+        .map((letter, index) => {
+            if(index < iteration) {
+            return event.target.dataset.value[index];
+            }
+        
+            return letters[Math.floor(Math.random() * 26)]
+        })
+        .join("");
+        
+        if(iteration >= event.target.dataset.value.length){ 
+        clearInterval(interval);
         }
-      
-        return letters[Math.floor(Math.random() * 26)]
-      })
-      .join("");
-    
-    if(iteration >= event.target.dataset.value.length){ 
-      clearInterval(interval);
+        
+        iteration += 1 / 3;
+    }, 30);
     }
+    document.getElementById("special4").onmouseover = event => {  
+    let iteration = 0;
     
-    iteration += 1 / 3;
-  }, 30);
-}
-document.getElementById("special4").onmouseover = event => {  
-  let iteration = 0;
-  
-  clearInterval(interval);
-  
-  interval = setInterval(() => {
-    event.target.innerText = event.target.innerText
-      .split("")
-      .map((letter, index) => {
-        if(index < iteration) {
-          return event.target.dataset.value[index];
+    clearInterval(interval);
+    
+    interval = setInterval(() => {
+        event.target.innerText = event.target.innerText
+        .split("")
+        .map((letter, index) => {
+            if(index < iteration) {
+            return event.target.dataset.value[index];
+            }
+        
+            return letters[Math.floor(Math.random() * 26)]
+        })
+        .join("");
+        
+        if(iteration >= event.target.dataset.value.length){ 
+        clearInterval(interval);
         }
-      
-        return letters[Math.floor(Math.random() * 26)]
-      })
-      .join("");
-    
-    if(iteration >= event.target.dataset.value.length){ 
-      clearInterval(interval);
+        
+        iteration += 1 / 3;
+    }, 30);
     }
+    document.getElementById("special5").onmouseover = event => {  
+    let iteration = 0;
     
-    iteration += 1 / 3;
-  }, 30);
-}
-document.getElementById("special5").onmouseover = event => {  
-  let iteration = 0;
-  
-  clearInterval(interval);
-  
-  interval = setInterval(() => {
-    event.target.innerText = event.target.innerText
-      .split("")
-      .map((letter, index) => {
-        if(index < iteration) {
-          return event.target.dataset.value[index];
+    clearInterval(interval);
+    
+    interval = setInterval(() => {
+        event.target.innerText = event.target.innerText
+        .split("")
+        .map((letter, index) => {
+            if(index < iteration) {
+            return event.target.dataset.value[index];
+            }
+        
+            return letters[Math.floor(Math.random() * 26)]
+        })
+        .join("");
+        
+        if(iteration >= event.target.dataset.value.length){ 
+        clearInterval(interval);
         }
-      
-        return letters[Math.floor(Math.random() * 26)]
-      })
-      .join("");
-    
-    if(iteration >= event.target.dataset.value.length){ 
-      clearInterval(interval);
+        
+        iteration += 1 / 3;
+    }, 30);
     }
-    
-    iteration += 1 / 3;
-  }, 30);
-}
-document.addEventListener('mousemove', function(event) {
-    if (event.pageY < 30) return;
-    const styles = {
-        top: `${event.pageY}px`
-    }
-    const styleTiming = {
-        duration: 1500
-    }
-    document.getElementById('rectangle').animate(styles, styleTiming)
-    document.getElementById('rectangle').style.top = event.pageY + 'px';
-})
+    document.addEventListener('mousemove', function(event) {
+        if (event.pageY < 30 || event.pageY > screen.height - 115) return;
+        // console.log(screen.height)
+        const styles = {
+            top: `${event.pageY}px`
+        }
+        const styleTiming = {
+            duration: 1500
+        }
+        document.getElementById('rectangle').animate(styles, styleTiming)
+        document.getElementById('rectangle').style.top = event.pageY + 'px';
+    })
 </script>
 </html>

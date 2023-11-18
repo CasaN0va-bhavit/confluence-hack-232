@@ -1,5 +1,5 @@
 const User = require('../schemas/userSchema');
-const hacks = require('../schemas/hackSubSchema');
+const teams = require('../schemas/teamSchema');
 const router = require('express').Router();
 
 router.get('/', async (req,res) => {

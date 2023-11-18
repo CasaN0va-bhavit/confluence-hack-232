@@ -16,7 +16,8 @@ const indexRouter = require('./routers/indexRouter'),
     leaderboardRouter = require('./routers/leaderboardRouter')
     adminRouter = require('./routers/adminRouter')
     hackSubRouter = require('./routers/hackSubRouter'),
-    itemsRouter = require('./routers/shopRouter')
+    itemsRouter = require('./routers/shopRouter'),
+    hackRegRouter = require('./routers/hackReg')
 
 mongoose.connect(process.env.MONGO_URI, console.log('MONGODB CONNECTED'))
 
@@ -44,5 +45,6 @@ app.use('/leaderboard', leaderboardRouter)
 app.use('/admin', adminRouter)
 app.use('/hack', hackSubRouter)
 app.use('/items', itemsRouter)
+app.use('/hackReg', hackRegRouter)
 
 app.listen(PORT, console.log(`SERVER CONNECTED ON PORT ${PORT}`))

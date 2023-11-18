@@ -5,7 +5,7 @@ const nonReqString = { type: String, required: false };
 
 const hackSubSchema = new Schema(
     {
-        username: reqString,
+        teamName: reqString,
         submissionLink: reqString,
         gdLink: reqString,
         dateCreated: {

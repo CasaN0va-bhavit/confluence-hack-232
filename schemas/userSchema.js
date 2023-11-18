@@ -33,6 +33,11 @@ const userSchema = new Schema(
             type: Array,
             required: false,
             default: []
+        },
+        participant: {
+            type: Boolean, 
+            required: true,
+            default : false
         }
     }
 );
