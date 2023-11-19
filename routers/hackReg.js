@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const teams = require('../schemas/teamSchema');
-const User = require('../schemas/userSchema')
+const User = require('../schemas/userSchema');
 
 router.get('/', async (req,res) => {
     var canReg = true;
@@ -10,12 +10,15 @@ router.get('/', async (req,res) => {
     for (let i = 0; i < allTeams.length; i++) {
         if (req.user.username === allTeams[i].participant1 || req.user.username === allTeams[i].participant2 || req.user.username === allTeams[i].participant3 || req.user.username === allTeams[i].participant4 || req.user.username === allTeams[i].teamAdmin) {
             canReg = false
+            console.log('cannot register')
             reqTeam = allTeams[i]
         }
     }
-    var canEdit;
-    if (req.user.email === reqTeam.teamAdmin) {
-        canEdit = true;
+    var canEdit = false;
+    if (reqTeam) {
+        if (reqTeam.teamAdmin === req.user.username) {
+            canEdit = true
+        }
     }
     res.render('hackReg', {canReg: canReg, user: req.user, reqTeam: reqTeam, error: "", canEdit: canEdit});
 });

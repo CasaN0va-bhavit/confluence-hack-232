@@ -50,4 +50,9 @@ app.use('/items', ensureAuthenticated, itemsRouter)
 app.use('/hackReg', ensureAuthenticated, hackRegRouter)
 app.use('/logout', ensureAuthenticated, logoutRouter)
 
+app.get('/logout', (req, res) => {
+    req.logout();
+    res.redirect('/login');
+});
+
 app.listen(PORT, console.log(`SERVER CONNECTED ON PORT ${PORT}`))

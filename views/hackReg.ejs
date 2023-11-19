@@ -20,7 +20,7 @@
             <%= error %>
             <% } %>
         </form>
-    <% } else { %>
+    <% } else if (canEdit) { %>
         <p>Edit your team:</p>
         <form action="/hackReg/editTeam/<%= reqTeam.id %>" method="post">
             <input type="text" required value="<%= reqTeam.teamName %>" placeholder="team name" name="teamName">
@@ -30,21 +30,40 @@
             <input type="email" name="participant4" value="<%= reqTeam.participant4 %>" placeholder="leave blank if empty"> 
             <button type="submit">Submit</button>   
         </form>
+    <% } else { %>
+        <p>Your team:</p>
+        <p>Team Admin: <%= reqTeam.teamAdmin %></p>
+        <p>Team Name: <%= reqTeam.teamName %></p>
+        <p>Participant 1: <%= reqTeam.participant1 %></p>
+        <p>Participant 2: <%= reqTeam.participant2 %></p>
+        <p>Participant 3: <%= reqTeam.participant3 %></p>
+        <p>Participant 4: <%= reqTeam.participant4 %></p>
     <% } %>
-
-
-    <svg width="784" height="70" viewBox="0 0 784 70" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M781 1H1.00001V69H727.713L781 1Z" stroke="#FF0000"/>
-        <path d="M784 27.1756V4L733 70H750.966L784 27.1756Z" fill="#FF0000"/>
-        <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="red" >TEXT</text>
-    </svg>
+    <div class="something">
+        <svg width="784" height="70" viewBox="0 0 784 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M781 1H1.00001V69H727.713L781 1Z" stroke="#FF0000"/>
+            <path d="M784 27.1756V4L733 70H750.966L784 27.1756Z" fill="#FF0000"/>
+            <!-- <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="red" >TEXT</text> -->
+        </svg>
+        <input placeholder="Enter the email" type="text" class="input" name="" id="" x="50%" y="50%" dominant-baseline="middle" >
+    </div>
     </body>
     <style>
+        .something {
+            position: relative;
+        }
         svg {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            width: 40vw;
+        }
+        .input {
+            position: absolute;
+            top: 22.5px;
+            left: 10px;
+            width: 35vw;
+            height: 2vw;
+            font-size: 1.3em;
+            outline: none;
+            border: none;
         }
     </style>
 </html>
