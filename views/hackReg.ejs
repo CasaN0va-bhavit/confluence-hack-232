@@ -130,11 +130,14 @@
                             </button>
                         </div>
                     </form>
-                    <svg class="team-heading-display" width="219" height="187" viewBox="0 0 219 187" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M148.5 186L165 169.5H183.5L167 186H148.5Z" fill="white"/>
-                        <path d="M175 186L191.5 169.5H210L193.5 186H175Z" fill="white"/>
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M0.5 0.5H218.5V164.117H162.042L139.589 186.5H0.5V0.5ZM1.5 1.5V185.5H139.176L161.629 163.117H217.5V1.5H1.5ZM164.793 169H184.707L167.207 186.5H147.293L164.793 169ZM165.207 170L149.707 185.5H166.793L182.293 170H165.207ZM191.293 169H211.207L193.707 186.5H173.793L191.293 169ZM191.707 170L176.207 185.5H193.293L208.793 170H191.707Z" fill="white"/>
-                    </svg>                   
+                    <div class="team-name">
+                        <svg class="team-heading-display" width="219" height="187" viewBox="0 0 219 187" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M148.5 186L165 169.5H183.5L167 186H148.5Z" fill="white"/>
+                            <path d="M175 186L191.5 169.5H210L193.5 186H175Z" fill="white"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M0.5 0.5H218.5V164.117H162.042L139.589 186.5H0.5V0.5ZM1.5 1.5V185.5H139.176L161.629 163.117H217.5V1.5H1.5ZM164.793 169H184.707L167.207 186.5H147.293L164.793 169ZM165.207 170L149.707 185.5H166.793L182.293 170H165.207ZM191.293 169H211.207L193.707 186.5H173.793L191.293 169ZM191.707 170L176.207 185.5H193.293L208.793 170H191.707Z" fill="white"/>
+                        </svg>
+                        <p class="smth">TEAM NAME</p>           
+                    </div>
                 </div>
             </div>
         </div>
@@ -373,6 +376,21 @@
         outline: none;
         border: none;
         padding: 0;
+    }
+    .team-name {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+    .smth {
+        position: absolute;
+        color: white;
+        text-align: center;
+        margin-left: 1.5vw;
+        width: 50%;
+        font-family: BlenderProBook;
     }
 </style>
 </html>
