@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body {
+                background-color: #000;
+                color: white;
+                font-family: sans-serif;
+                margin: 15px;
+            }
+            * {box-sizing: border-box;}
+            h1 {
+                text-align: center;
+                color: #16e16e; 
+                margin-top: 20px;
+            }
+            h2 {
+                text-align: center;
+                color: cyan;
+            }
+            .card {
+                width: 30vw;
+                box-shadow: 0px 0px 16px 8px cyan;
+                border-radius: 10px;
+                margin-left: 35vw;
+                padding: 15px;
+                margin-top: 50px;
+            }
+            p {
+                text-align: center;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>You Have Created The Team <%= teamName %>!</h1>
+        <div class='card'>
+            <h2>Your Team Includes:</h2>
+            <p><%= participant1 %></p>
+            <p><% if (participant2) { %><%= participant2 %> <% } %></p>
+            <p><% if (participant3) { %><%= participant3 %> <% } %></p>
+            <p><% if (participant4) { %><%= participant4 %> <% } %></p><br>
+            <p style="font-weight: normal"><i>You have admin access to this team, which means that you can edit its members, remove them from the team, etc.</i></p>
+        </div>
+    </body>
+</html>

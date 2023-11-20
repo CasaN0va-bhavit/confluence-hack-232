@@ -348,7 +348,7 @@
         iteration += 1 / 3;
     }, 30);
     }
-    document.addEventListener('mousemove', function(event) {
+    window.addEventListener('mousemove', function(event) {
         if (event.pageY < 30 || event.pageY > screen.height - 115) return;
         var kuchhBhi = (event.pageX / screen.width) * 100
         if (kuchhBhi < 14 || kuchhBhi > 88.5) return;

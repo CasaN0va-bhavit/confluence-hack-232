@@ -19,7 +19,8 @@ const indexRouter = require('./routers/indexRouter'),
     hackSubRouter = require('./routers/hackSubRouter'),
     itemsRouter = require('./routers/shopRouter'),
     hackRegRouter = require('./routers/hackReg'),
-    logoutRouter = require('./routers/logoutRouter')
+    logoutRouter = require('./routers/logoutRouter'),
+    snakeRouter = require('./routers/snakeRouter')
 
 mongoose.connect(process.env.MONGO_URI, console.log('MONGODB CONNECTED'))
 
@@ -39,6 +40,14 @@ app.use(passport.session())
 passportInit(passport)
 
 
+app.get('/normalTeam', (req, res) => {
+    const domainName = process.env.DOMAIN_NAME
+    console.log(domainName)
+    res.render('normalTeamEmail', {user: req.user, teamName: "X Team", participant1: 'hello@world.com', participant2: 'bro@hikaru.com', participant3: null, participant4: null, teamAdmin: "sethshyamak@gmail.com", domainName: domainName})
+})
+app.get('/adminTeam', (req, res) => {
+    res.render('adminTeamEmail', {user: req.user, teamName: "X Team", participant1: 'hello@world.com', participant2: 'bro@hikaru.com', participant3: null, participant4: null, teamAdmin: "sethshyamak@gmail.com"})
+})
 app.use('/', indexRouter)
 app.use('/login', forwardAuthenticated, loginRouter)
 app.use('/register', forwardAuthenticated, regRouter)
@@ -49,6 +58,7 @@ app.use('/hack', ensureAuthenticated, hackSubRouter)
 app.use('/items', ensureAuthenticated, itemsRouter)
 app.use('/hackReg', ensureAuthenticated, hackRegRouter)
 app.use('/logout', ensureAuthenticated, logoutRouter)
+app.use('/snake', ensureAuthenticated, snakeRouter)
 
 app.get('/logout', (req, res) => {
     req.logout();
