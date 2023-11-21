@@ -13,10 +13,7 @@ const hackSubSchema = new Schema(
             required: true,
             default: Date.now
         },
-        images: {
-            type: Array,
-            required: false
-        },
+        thumbnail: reqString,
         prize: {
             type: String,
             required: false,
@@ -26,7 +23,9 @@ const hackSubSchema = new Schema(
             type: String,
             required: false,
             default: "no rank"
-        }
+        },
+        env: reqString,
+        projectName: reqString
     }
 );
 

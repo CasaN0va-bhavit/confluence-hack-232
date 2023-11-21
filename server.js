@@ -21,10 +21,12 @@ const indexRouter = require('./routers/indexRouter'),
     hackRegRouter = require('./routers/hackReg'),
     logoutRouter = require('./routers/logoutRouter'),
     snakeRouter = require('./routers/snakeRouter')
+    breachPRouter = require('./routers/breachPRouter')
 
 mongoose.connect(process.env.MONGO_URI, console.log('MONGODB CONNECTED'))
 
 app.use(express.static('public'))
+app.use(express.static('uploads'))
 app.set('view engine', 'ejs')
 app.use(flash())
 app.use(session({
@@ -59,6 +61,7 @@ app.use('/items', ensureAuthenticated, itemsRouter)
 app.use('/hackReg', ensureAuthenticated, hackRegRouter)
 app.use('/logout', ensureAuthenticated, logoutRouter)
 app.use('/snake', ensureAuthenticated, snakeRouter)
+app.use('/breachProtocol', ensureAuthenticated, breachPRouter)
 
 app.get('/logout', (req, res) => {
     req.logout();
