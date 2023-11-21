@@ -5,14 +5,15 @@ const ejs = require('ejs')
 var transporter = nodemailer.createTransport({
   service: 'outlook',
   auth: {
-    user: process.env.FROM_EMAIL,
-    pass: process.env.EMAIL_PASS
+    user: "confluence23.aisg46@outlook.com",
+    pass: "bhavitisgay1234"
   }
 });
 
 async function sendMail(to, subject, text, html) {
+  console.log("sendMail Function Initialized")
   var mailOptions = {
-    from: process.env.FROM_EMAIL,
+    from: "confluence23.aisg46@outlook.com",
     to: to,
     subject: subject,
     text: text,
@@ -23,6 +24,7 @@ async function sendMail(to, subject, text, html) {
     x = await transporter.sendMail(mailOptions);
   } catch (err) {
     x = err;
+    console.log(err)
   }
   return x;
 }

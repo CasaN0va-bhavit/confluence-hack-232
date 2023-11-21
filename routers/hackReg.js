@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const teams = require('../schemas/teamSchema');
 const User = require('../schemas/userSchema');
+const {sendMail} = require('../utils/mailHelper')
+const ejs = require('ejs')
 
 router.get('/', async (req,res) => {
     var canReg = true;
@@ -66,6 +68,62 @@ router.post('/create-team', async (req,res) => {
                 teamAdmin: req.user.username
             });
             await newTeam.save()
+            await sendMail(
+                req.body.participant1, 
+                `You Have Been Added To Team ${teamName}`, 
+                `You Have Been Added To Team ${teamName}`, 
+                await ejs.renderFile(__dirname + "/../views/normalTeamEmail.ejs", {
+                    teamName: teamName,
+                    teamAdmin: req.user.username,
+                    participant1: participant1,
+                    participant2: req.body.participant2,
+                    participant3: req.body.participant3,
+                    participant4: req.body.participant4,
+                    domainName: process.env.DOMAIN_NAME
+                })
+            )
+            await sendMail(
+                req.body.participant2, 
+                `You Have Been Added To Team ${teamName}`, 
+                `You Have Been Added To Team ${teamName}`, 
+                await ejs.renderFile(__dirname + "/../views/normalTeamEmail.ejs", {
+                    teamName: teamName,
+                    teamAdmin: req.user.username,
+                    participant1: participant1,
+                    participant2: req.body.participant2,
+                    participant3: req.body.participant3,
+                    participant4: req.body.participant4,
+                    domainName: process.env.DOMAIN_NAME
+                })
+            )
+            await sendMail(
+                req.body.participant3, 
+                `You Have Been Added To Team ${teamName}`, 
+                `You Have Been Added To Team ${teamName}`, 
+                await ejs.renderFile(__dirname + "/../views/normalTeamEmail.ejs", {
+                    teamName: teamName,
+                    teamAdmin: req.user.username,
+                    participant1: participant1,
+                    participant2: req.body.participant2,
+                    participant3: req.body.participant3,
+                    participant4: req.body.participant4,
+                    domainName: process.env.DOMAIN_NAME
+                })
+            )
+            await sendMail(
+                req.body.participant4, 
+                `You Have Been Added To Team ${teamName}`, 
+                `You Have Been Added To Team ${teamName}`, 
+                await ejs.renderFile(__dirname + "/../views/normalTeamEmail.ejs", {
+                    teamName: teamName,
+                    teamAdmin: req.user.username,
+                    participant1: participant1,
+                    participant2: req.body.participant2,
+                    participant3: req.body.participant3,
+                    participant4: req.body.participant4,
+                    domainName: process.env.DOMAIN_NAME
+                })
+            )
             res.redirect('/hackReg')
         }
     }
@@ -86,6 +144,48 @@ router.post('/create-team', async (req,res) => {
                 teamAdmin: req.user.username
             });
             await newTeam.save()
+            await sendMail(
+                req.body.participant1, 
+                `You Have Been Added To Team ${teamName}`, 
+                `You Have Been Added To Team ${teamName}`, 
+                await ejs.renderFile(__dirname + "/../views/normalTeamEmail.ejs", {
+                    teamName: teamName,
+                    teamAdmin: req.user.username,
+                    participant1: participant1,
+                    participant2: req.body.participant2,
+                    participant3: req.body.participant3,
+                    participant4: null,
+                    domainName: process.env.DOMAIN_NAME
+                })
+            )
+            await sendMail(
+                req.body.participant2, 
+                `You Have Been Added To Team ${teamName}`, 
+                `You Have Been Added To Team ${teamName}`, 
+                await ejs.renderFile(__dirname + "/../views/normalTeamEmail.ejs", {
+                    teamName: teamName,
+                    teamAdmin: req.user.username,
+                    participant1: participant1,
+                    participant2: req.body.participant2,
+                    participant3: req.body.participant3,
+                    participant4: null,
+                    domainName: process.env.DOMAIN_NAME
+                })
+            )
+            await sendMail(
+                req.body.participant1, 
+                `You Have Been Added To Team ${teamName}`, 
+                `You Have Been Added To Team ${teamName}`, 
+                await ejs.renderFile(__dirname + "/../views/normalTeamEmail.ejs", {
+                    teamName: teamName,
+                    teamAdmin: req.user.username,
+                    participant1: participant1,
+                    participant2: req.body.participant2,
+                    participant3: req.body.participant3,
+                    participant4: null,
+                    domainName: process.env.DOMAIN_NAME
+                })
+            )
             res.redirect('/hackReg')
         }
     }
@@ -101,9 +201,37 @@ router.post('/create-team', async (req,res) => {
                 teamName: teamName,
                 participant1: participant1,
                 teamAdmin: req.user.username,
-                participant2: req.body.participant2
+                participant2: req.body.participant2,
             });
             await newTeam.save()
+            await sendMail(
+                req.body.participant1, 
+                `You Have Been Added To Team ${teamName}`, 
+                `You Have Been Added To Team ${teamName}`, 
+                await ejs.renderFile(__dirname + "/../views/normalTeamEmail.ejs", {
+                    teamName: teamName,
+                    teamAdmin: req.user.username,
+                    participant1: participant1,
+                    participant2: req.body.participant2,
+                    participant3: null,
+                    participant4: null,
+                    domainName: process.env.DOMAIN_NAME
+                })
+            )
+            await sendMail(
+                req.body.participant2, 
+                `You Have Been Added To Team ${teamName}`, 
+                `You Have Been Added To Team ${teamName}`, 
+                await ejs.renderFile(__dirname + "/../views/normalTeamEmail.ejs", {
+                    teamName: teamName,
+                    teamAdmin: req.user.username,
+                    participant1: participant1,
+                    participant2: req.body.participant2,
+                    participant3: null,
+                    participant4: null,
+                    domainName: process.env.DOMAIN_NAME
+                })
+            )
             res.redirect('/hackReg')
         }
     }
@@ -120,6 +248,20 @@ router.post('/create-team', async (req,res) => {
                 teamAdmin: req.user.username
             });
             await newTeam.save()
+            await sendMail(
+                req.body.participant1, 
+                `You Have Been Added To Team ${teamName}`, 
+                `You Have Been Added To Team ${teamName}`, 
+                await ejs.renderFile(__dirname + "/../views/normalTeamEmail.ejs", {
+                    teamName: teamName,
+                    teamAdmin: req.user.username,
+                    participant1: participant1,
+                    participant2: null,
+                    participant3: null,
+                    participant4: null,
+                    domainName: process.env.DOMAIN_NAME
+                })
+            )
             res.redirect('/hackReg')
         }
     } else {
