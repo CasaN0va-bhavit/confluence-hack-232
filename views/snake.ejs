@@ -854,9 +854,9 @@
                         document.getElementById('pointsh1').innerHTML = "Points: " + points
                         console.log('POINT BEHENCHOD')
                         if (movingDirection == 'right') coords.unshift([coords[0][0] - 2, khaanaCoords[i][1]])
-                        if (movingDirection == 'left') coords.push([khaanaCoords[i][0], khaanaCoords[i][1]])
-                        if (movingDirection == 'up') coords.push([khaanaCoords[i][0], khaanaCoords[i][1]])
-                        if (movingDirection == 'up') coords.push([khaanaCoords[i][0], khaanaCoords[i][1]])
+                        if (movingDirection == 'left') coords.unshift([coords[0][0] + 2, khaanaCoords[i][1]])
+                        if (movingDirection == 'up') coords.unshift([khaanaCoords[i][0], coords[i][1] + 2])
+                        if (movingDirection == 'down') coords.unshift([khaanaCoords[i][0], coords[i][1] - 2])
                     }
                 }
             }, 200)
