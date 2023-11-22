@@ -25,7 +25,8 @@ const hackSubSchema = new Schema(
             default: "no rank"
         },
         env: reqString,
-        projectName: reqString
+        projectName: reqString,
+        desc:  reqString
     }
 );
 
