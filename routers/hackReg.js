@@ -2,8 +2,21 @@ const router = require('express').Router();
 const teams = require('../schemas/teamSchema');
 const User = require('../schemas/userSchema');
 const {sendMail} = require('../utils/mailHelper')
-const ejs = require('ejs')
+const ejs = require('ejs');
+const multer = require('multer')
+const path = require('path')
+const storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+        cb(null, 'uploads')
+    },
+    filename: function(req, file, cb) {
+        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+    }
 
+})
+const upload = multer({
+    storage: storage
+})
 router.get('/', async (req,res) => {
     var canReg = true;
     const allTeams = await teams.find({});
@@ -25,11 +38,15 @@ router.get('/', async (req,res) => {
     res.render('hackReg', {canReg: canReg, user: req.user, reqTeam: reqTeam, error: "", canEdit: canEdit});
 });
 
-router.post('/create-team', async (req,res) => {
+router.post('/create-team', upload.single('teamPfp'), async (req,res) => {
     const {teamName,  participant1} = req.body
     const foundTeam = await teams.find({})
     var error = ""
-    console.log(req.body)
+    if(!req.file) {
+        error = "Please upload a profile picture of your team";   
+    }
+    const fileName = req.file.filename
+    // console.log(req.body)
     async function someFunction (participant) {
         const foundUserName = await User.findOne({username: participant})
         console.log(participant)
@@ -65,7 +82,8 @@ router.post('/create-team', async (req,res) => {
                 participant2: req.body.participant2,
                 participant3: req.body.participant3,
                 participant4: req.body.participant4,
-                teamAdmin: req.user.username
+                teamAdmin: req.user.username,
+                teamPfp: fileName
             });
             await newTeam.save()
             await sendMail(
@@ -141,7 +159,8 @@ router.post('/create-team', async (req,res) => {
                 participant1: participant1,
                 participant2: req.body.participant2,
                 participant3: req.body.participant3,
-                teamAdmin: req.user.username
+                teamAdmin: req.user.username,
+                teamPfp: fileName
             });
             await newTeam.save()
             await sendMail(
@@ -202,6 +221,7 @@ router.post('/create-team', async (req,res) => {
                 participant1: participant1,
                 teamAdmin: req.user.username,
                 participant2: req.body.participant2,
+                teamPfp: fileName
             });
             await newTeam.save()
             await sendMail(
@@ -245,7 +265,8 @@ router.post('/create-team', async (req,res) => {
             const newTeam = new teams({
                 teamName: teamName,
                 participant1: participant1,
-                teamAdmin: req.user.username
+                teamAdmin: req.user.username,
+                teamPfp: fileName
             });
             await newTeam.save()
             await sendMail(
@@ -271,12 +292,15 @@ router.post('/create-team', async (req,res) => {
 
 router.post('/editTeam/:id', async (req,res) => {
     const {teamName,  participant1} = req.body
+    if (!req.file) {
+        error = "Please upload a team pfp."
+    }
     if (req.body.participant2 !== undefined || req.body.participant2 !== "") {
         await teams.findByIdAndUpdate(req.params.id, {
             $set: {
                 teamName: teamName,
                 participant1: participant1,
-                participant2: req.body.participant2   
+                participant2: req.body.participant2 
             }
         });
     }

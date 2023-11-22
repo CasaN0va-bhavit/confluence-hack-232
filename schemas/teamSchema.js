@@ -11,6 +11,7 @@ const teamSchema = new Schema(
         participant2: nonReqString,
         participant3: nonReqString,
         participant4: nonReqString,
+        teamPfp: reqString
     }
 );
 

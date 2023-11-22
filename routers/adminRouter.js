@@ -1,11 +1,12 @@
 const User = require('../schemas/userSchema');
 const teams = require('../schemas/teamSchema');
 const router = require('express').Router();
+const hacks = require('../schemas/hackSubSchema')
 
 router.get('/', async (req,res) => {
     if (req.user.admin) {
         const hackSubmissions = await hacks.find({});
-        console.log(hackSubmissions[0].id)
+        console.log(hackSubmissions)
         res.render('admin', {username: req.user.fname, user: req.user, hackSubmissions: hackSubmissions})
     }
     else {
