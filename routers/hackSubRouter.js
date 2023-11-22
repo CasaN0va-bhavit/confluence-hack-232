@@ -47,13 +47,17 @@ router.get('/', async (req,res) => {
         error = "Please add yourself/make a team to make a hack submission."
     }
     var reqID;
-    const allHacks = await hacks.find({})
-    for (let i = 0; i < allHacks.length; i ++) {
-        console.log(allHacks[i])
-        if (allHacks[i].teamName === reqTeam.teamName) {
-            canSub = false;
-            reqID = allHacks[i].id
+    if (reqTeam) {
+        const allHacks = await hacks.find({})
+        for (let i = 0; i < allHacks.length; i ++) {
+            console.log(allHacks[i])
+            if (allHacks[i].teamName === reqTeam.teamName) {
+                canSub = false;
+                reqID = allHacks[i].id
+            }
         }
+    } else {
+        reqID = "asdasdada"
     }
 
     res.render('hackSubmission', {error: error, reqTeam: reqTeam, canSub: canSub, reqId: reqID});
