@@ -6,7 +6,7 @@
     <title>Snake Game</title>
     <style>
     body {
-        height: auto;
+        min-height: 100vh;
         width: 100%;
         background-image: linear-gradient(#000615, #190000);
         overflow-x: hidden;
@@ -83,11 +83,47 @@
     .playArea {
         background-color: #222;
         width: 60vw;
-        height: 40vh;
+        height: 50vh;
+        clip-path: polygon(0% 0, 90% 0%, 100% 21%, 100% 100%, 0 100%);
+        position: relative;
     }
     .mainControls {
         display: flex;
         flex-direction: column;
+    }
+    .playAreaKeBaapKaBaap {
+        clip-path: polygon(0% 0, 90% 0%, 100% 21%, 100% 100%, 0 100%);
+        width: 62vw;
+        height: 55vh;
+        background-color: red;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .playAreaKaBaap {
+        clip-path: polygon(0% 0, 90% 0%, 100% 21%, 100% 100%, 0 100%);
+        width: calc(62vw - 4px);
+        height: calc(55vh - 4px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: black;
+    }
+    .grid {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid #000;
+        width: 100%;
+        height: 100%;
+    }
+    .row {
+        display: flex;
+        flex-direction: row;
+        flex: 1;
+    }
+    .box {
+        /* border: 1px solid #000; */
+        flex: 1;
     }
     </style>
 </head>
@@ -129,7 +165,7 @@
     </div>
     <div class="controls">
         <div class="mainControls">
-            <svg xmlns="http://www.w3.org/2000/svg" width="225" height="34" viewBox="0 0 225 34" fill="none">
+            <svg xmlns="http://www.w3.org/2000/svg" width="225" height="34" viewBox="0 0 225 34" fill="none" style="margin-bottom: 10px; position: absolute;">
                 <path d="M12.1627 33.1081L28.3789 16.8919L11.487 0L0.000553131 0L16.8924 16.8919L0.676228 33.1081H12.1627Z" fill="white"/>
                 <path d="M40.2701 33.1081L56.4863 16.8919L39.4593 0L28.108 0L44.9999 16.8919L28.7836 33.1081H40.2701Z" fill="white"/>
                 <path d="M68.2428 33.1081L84.459 16.8919L67.5671 0L56.0806 0L72.9725 16.8919L56.7563 33.1081H68.2428Z" fill="white"/>
@@ -139,20 +175,947 @@
                 <path d="M180.812 33.1081L196.893 16.8919L180.001 0L168.649 0L185.541 16.8919L169.325 33.1081H180.812Z" fill="white"/>
                 <path d="M208.785 33.1081L225.001 16.8919L208.109 0L196.623 0L213.514 16.8919L197.298 33.1081H208.785Z" fill="white"/>
             </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" width="927" height="433" viewBox="0 0 927 433" fill="none">
-                <g filter="url(#filter0_b_170_183)">
-                <path d="M0 433V0H844.988L927 74.0053V433H0Z" fill="#151515" fill-opacity="0.84"/>
-                </g>
-                <defs>
-                <filter id="filter0_b_170_183" x="-12.8" y="-12.8" width="952.6" height="458.6" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                <feGaussianBlur in="BackgroundImageFix" stdDeviation="6.4"/>
-                <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_170_183"/>
-                <feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_170_183" result="shape"/>
-                </filter>
-                </defs>
-            </svg>
+            <h1 style="text-align: center; margin: 0px; font-family: BlenderProBook; color: white;" id="pointsh1">Points: 0</h1>
+            <div class="playAreaKeBaapKaBaap">
+                <div class="playAreaKaBaap">
+                    <div class="playArea" id="playArea">
+                        <div class="grid">
+                            <div class="row">
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                            </div>
+                            <div class="row">
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                            </div>
+                            <div class="row">
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                            </div>
+                            <div class="row">
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                            </div>
+                            <div class="row">
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                            </div>
+                            <div class="row">
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                            </div>
+                            <div class="row">
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                            </div>
+                            <div class="row">
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                            </div>
+                            <div class="row">
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                            </div>
+                            <div class="row">
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                            </div>
+                            <div class="row">
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                            </div>
+                            <div class="row">
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                            </div>
+                            <div class="row">
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                            </div>
+                            <div class="row">
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                            </div>
+                            <div class="row">
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                            </div>
+                            <div class="row">
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                            </div>
+                            <div class="row">
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                            </div>
+                            <div class="row">
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                            </div>
+                            <div class="row">
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                            </div>
+                            <div class="row">
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                                <div class="box"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+    <script>
+        window.onload = function() {
+            var gameOver = false;
+            const coords = [[3, 19], [5, 19], [7, 19]]
+            var points = 0
+            const khaanaCoords = []
+            var movingDirection = 'right'
+            var pastDirection = 'start'
+            var doable = true
+            getBox(3, 19).style.backgroundColor = 'red'
+            getBox(5, 19).style.backgroundColor = 'red'
+            getBox(7, 19).style.backgroundColor = 'red'
+            const gameInterval = window.setInterval(function() {
+                if (gameOver) {
+                    clearInterval(gameInterval)
+                    alert("GAME OVER! You scored " + points + " points!")
+                    window.location.href='/snake'
+                }
+                if (movingDirection == 'right') moveRight()
+                if (movingDirection == 'left') moveLeft()
+                if (movingDirection == 'up') moveUp()
+                if (movingDirection == 'down') moveDown()
+                for (let i = 0; i < khaanaCoords.length; i++) {
+                    if (khaanaCoords[i][0] == coords[coords.length - 1][0] && khaanaCoords[i][1] == coords[coords.length - 1][1]) {
+                        points += 1
+                        document.getElementById('pointsh1').innerHTML = "Points: " + points
+                        console.log('POINT BEHENCHOD')
+                        if (movingDirection == 'right') coords.unshift([coords[0][0] - 2, khaanaCoords[i][1]])
+                        if (movingDirection == 'left') coords.push([khaanaCoords[i][0], khaanaCoords[i][1]])
+                        if (movingDirection == 'up') coords.push([khaanaCoords[i][0], khaanaCoords[i][1]])
+                        if (movingDirection == 'up') coords.push([khaanaCoords[i][0], khaanaCoords[i][1]])
+                    }
+                }
+            }, 200)
+            window.setInterval(function() {
+                const randomX = Math.ceil(Math.random() * 30)
+                const randomY = Math.ceil(Math.random() * 20)
+                for (let i = 0; i < coords.length; i++) {
+                    if (coords[i][0] == randomX && coords[i][1] == randomY) return;
+                }
+                getBox(randomX, randomY).style.backgroundColor = 'white'
+                khaanaCoords.push([randomX, randomY])
+            }, 4000)
+            window.addEventListener('keyup', function(event) {
+                if (event.keyCode == 37) {
+                    if (movingDirection == 'right') {
+                        return movingDirection = 'right'
+                    }
+                    if (movingDirection == 'left') {
+                        return movingDirection == 'left'
+                    }
+                    pastDirection = movingDirection
+                    movingDirection = 'left'
+                }
+                if (event.keyCode == 38) {
+                    if (movingDirection == 'up') {
+                        return movingDirection = 'up'
+                    }
+                    if (movingDirection == 'down') {
+                        return movingDirection == 'down'
+                    }
+                    pastDirection = movingDirection
+                    movingDirection = 'up'
+                }
+                if (event.keyCode == 39) {
+                    if (movingDirection == 'right') {
+                        return movingDirection = 'right'
+                    }
+                    if (movingDirection == 'left') {
+                        return movingDirection == 'left'
+                    }
+                    pastDirection = movingDirection
+                    movingDirection = 'right'
+                }
+                if (event.keyCode == 40) {
+                    if (movingDirection == 'up') {
+                        return movingDirection = 'up'
+                    }
+                    if (movingDirection == 'down') {
+                        return movingDirection == 'down'
+                    }
+                    pastDirection = movingDirection
+                    movingDirection = 'down'
+                }
+            })
+            function moveRight() {
+                if (pastDirection == 'up') {
+                    mainCoords = [coords[coords.length - 1][0], coords[coords.length - 1][1]]
+                    if (mainCoords[0] >= 30) {
+                        gameOver = true;
+                    };
+                    for (let i = 0; i < coords.length; i++) {
+                        if (mainCoords[1] == coords[i][1]) {
+                            getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
+                            getBox(coords[i][0] + 1, coords[i][1]).style.backgroundColor = 'red'
+                            coords[i] = [coords[i][0] + 1, coords[i][1]]
+                        } else {
+                            getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
+                            getBox(coords[i][0], coords[i][1] - 1).style.backgroundColor = 'red'
+                            coords[i] = [coords[i][0], coords[i][1] - 1]
+                        }
+                    }
+                } else if (pastDirection == 'down') {
+                    mainCoords = [coords[coords.length - 1][0], coords[coords.length - 1][1]]
+                    if (mainCoords[0] >= 30) {
+                        gameOver = true;
+                    };
+                    for (let i = 0; i < coords.length; i++) {
+                        if (mainCoords[1] == coords[i][1]) {
+                            getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
+                            getBox(coords[i][0] + 1, coords[i][1]).style.backgroundColor = 'red'
+                            coords[i] = [coords[i][0] + 1, coords[i][1]]
+                        } else {
+                            getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
+                            getBox(coords[i][0], coords[i][1] + 1).style.backgroundColor = 'red'
+                            coords[i] = [coords[i][0], coords[i][1] + 1]
+                        }
+                    }
+                } else {
+                    mainCoords = [coords[coords.length - 1][0], coords[coords.length - 1][1]]
+                    if (mainCoords[0] >= 30) {
+                        gameOver = true;
+                    };
+                    for (let i = 0; i < coords.length; i++) {
+                        getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
+                        getBox(coords[i][0] + 1, coords[i][1]).style.backgroundColor = 'red'
+                        coords[i] = [coords[i][0] + 1, coords[i][1]]
+                    }
+                }
+            }
+            function moveDown() {
+                if (pastDirection == 'right') {
+                    mainCoords = [coords[coords.length - 1][0], coords[coords.length-1][1]]
+                    if (mainCoords[1] >= 20) {
+                        gameOver = true;
+                    };
+                    console.log(mainCoords)
+                    for (let i = 0; i < coords.length; i++) {
+                        if (mainCoords[0] == coords[i][0]) {
+                            getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
+                            getBox(coords[i][0], coords[i][1] + 1).style.backgroundColor = 'red'
+                            coords[i] = [coords[i][0], coords[i][1] + 1]
+                        } else {
+                            getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
+                            getBox(coords[i][0] + 1, coords[i][1]).style.backgroundColor = 'red'
+                            coords[i] = [coords[i][0] + 1, coords[i][1]]
+                        }
+                    }
+                } else if (pastDirection == 'left') {
+                    mainCoords = [coords[coords.length - 1][0], coords[coords.length-1][1]]
+                    if (mainCoords[1] >= 20) {
+                        gameOver = true;
+                    };
+                    console.log(mainCoords)
+                    for (let i = 0; i < coords.length; i++) {
+                        if (mainCoords[0] == coords[i][0]) {
+                            getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
+                            getBox(coords[i][0], coords[i][1] + 1).style.backgroundColor = 'red'
+                            coords[i] = [coords[i][0], coords[i][1] + 1]
+                        } else {
+                            getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
+                            getBox(coords[i][0] - 1, coords[i][1]).style.backgroundColor = 'red'
+                            coords[i] = [coords[i][0] - 1, coords[i][1]]
+                        }
+                    }
+                } else {
+                    mainCoords = [coords[coords.length - 1][0], coords[coords.length - 1][1]]
+                    if (mainCoords[1] >= 20) {
+                        gameOver = true;
+                    };
+                    for (let i = 0; i < coords.length; i++) {
+                        getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
+                        getBox(coords[i][0], coords[i][1] + 1).style.backgroundColor = 'red'
+                        coords[i] = [coords[i][0], coords[i][1] + 1]
+                    }
+                }
+            }
+            function moveUp() {
+                if (pastDirection == 'right') {
+                    mainCoords = [coords[coords.length - 1][0], coords[coords.length-1][1]]
+                    if (mainCoords[1] <= 1) {
+                        gameOver = true;
+                    };
+                    console.log(mainCoords)
+                    for (let i = 0; i < coords.length; i++) {
+                        console.log("Main Coords", mainCoords[1])
+                        console.log("coords i", coords[i])
+                        if (mainCoords[0] == coords[i][0]) {
+                            getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
+                            getBox(coords[i][0], coords[i][1] - 1).style.backgroundColor = 'red'
+                            coords[i] = [coords[i][0], coords[i][1] -1]
+                        } else {
+                            getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
+                            getBox(coords[i][0] + 1, coords[i][1]).style.backgroundColor = 'red'
+                            coords[i] = [coords[i][0] + 1, coords[i][1]]
+                        }
+                    }
+                } else if (pastDirection == 'left') {
+                    mainCoords = [coords[coords.length - 1][0], coords[coords.length-1][1]]
+                    if (mainCoords[1] <= 1) {
+                        gameOver = true;
+                    };
+                    console.log(mainCoords)
+                    for (let i = 0; i < coords.length; i++) {
+                        if (mainCoords[0] == coords[i][0]) {
+                            getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
+                            getBox(coords[i][0], coords[i][1] - 1).style.backgroundColor = 'red'
+                            coords[i] = [coords[i][0], coords[i][1] - 1]
+                        } else {
+                            getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
+                            getBox(coords[i][0] - 1, coords[i][1]).style.backgroundColor = 'red'
+                            coords[i] = [coords[i][0] - 1, coords[i][1]]
+                        }
+                    }
+                } else {
+                    mainCoords = [coords[coords.length - 1][0], coords[coords.length - 1][1]]
+                    if (mainCoords[1] <= 1) {
+                        gameOver = true;
+                    };
+                    for (let i = 0; i < coords.length; i++) {
+                        getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
+                        getBox(coords[i][0], coords[i][1] - 1).style.backgroundColor = 'red'
+                        coords[i] = [coords[i][0], coords[i][1] -1]
+                    }
+                }
+                
+            }
+            function moveLeft() {
+                if (pastDirection == 'up') {
+                    mainCoords = [coords[coords.length - 1][0], coords[coords.length - 1][1]]
+                    if (mainCoords[0] <= 1) {
+                        gameOver = true;
+                    };
+                    for (let i = 0; i < coords.length; i++) {
+                        if (mainCoords[1] == coords[i][1]) {
+                            getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
+                            getBox(coords[i][0] - 1, coords[i][1]).style.backgroundColor = 'red'
+                            coords[i] = [coords[i][0] - 1, coords[i][1]]
+                        } else {
+                            getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
+                            getBox(coords[i][0], coords[i][1] - 1).style.backgroundColor = 'red'
+                            coords[i] = [coords[i][0], coords[i][1] - 1]
+                        }
+                    }
+                } else if (pastDirection == 'down') {
+                    mainCoords = [coords[coords.length - 1][0], coords[coords.length - 1][1]]
+                    if (mainCoords[0] <= 1) {
+                        gameOver = true;
+                    };
+                    for (let i = 0; i < coords.length; i++) {
+                        if (mainCoords[1] == coords[i][1]) {
+                            getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
+                            getBox(coords[i][0] - 1, coords[i][1]).style.backgroundColor = 'red'
+                            coords[i] = [coords[i][0] - 1, coords[i][1]]
+                        } else {
+                            getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
+                            getBox(coords[i][0], coords[i][1] + 1).style.backgroundColor = 'red'
+                            coords[i] = [coords[i][0], coords[i][1] + 1]
+                        }
+                    }
+                } else {
+                    mainCoords = [coords[coords.length - 1][0], coords[coords.length - 1][1]]
+                    if (mainCoords[0] <= 1) {
+                        gameOver = true;
+                    };
+                    for (let i = 0; i < coords.length; i++) {
+                        getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
+                        getBox(coords[i][0] - 1, coords[i][1]).style.backgroundColor = 'red'
+                        coords[i] = [coords[i][0] - 1, coords[i][1]]
+                    }
+                }
+            }
+        }
+        function getBox(x, y) {
+            const rows = document.getElementsByClassName('row')
+            for (let i = 0; i < rows.length; i++) {
+                const boxes = rows[i].children
+                for (let j = 0; j < boxes.length; j++) {
+                    if (i == y - 1 && j == x - 1) {
+                        return boxes[j]
+                    }
+                }
+            }
+        }
+        function getId(id) {
+            return document.getElementById(id)
+        }
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1) + min)
+        }
+    </script>
 </body>
 </html>
