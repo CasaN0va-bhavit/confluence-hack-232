@@ -24,15 +24,19 @@
               </svg>
         </div>
         <ul class="nav-menu">
-            <li class="nav-item" id="special" data-value="REGISTER">REGISTER</li>
+            <% if (!user) { %>
+            <a class="nav-item" id="special" href='/register' data-value="REGISTER">REGISTER</a>
             <li class="nav-item" style="height: 100%;"><div class="line"></div></li>
-            <li class="nav-item" id="special2" data-value="LOGIN">LOGIN</li>
+            <a class="nav-item" id="special2" data-value="LOGIN" href="/login">LOGIN</a>
             <li class="nav-item" style="height: 100%;"><div class="line"></div></li>
-            <li class="nav-item" id="special3" data-value="TEAMS">TEAMS</li>
+            <% } %>
+            <a class="nav-item" id="special3" data-value="TEAMS" href="/hackReg">TEAMS</a>
             <li class="nav-item" style="height: 100%;"><div class="line"></div></li>
-            <li class="nav-item" id="special4" data-value="PROMO">PROMO</li>
+            <a class="nav-item" id="special4" data-value="PROMO" href="/promo">PROMO</a>
             <li class="nav-item" style="height: 100%;"><div class="line"></div></li>
-            <li class="nav-item" id="special5" data-value="FAQS">FAQS</li>
+            <a class="nav-item" id="special5" data-value="FAQS" href="/faqs">FAQS</a>
+            <li class="nav-item" style="height: 100%;"><div class="line"></div></li>
+            <a class="nav-item" id="special6" data-value="SNAKE" href="/snake">SNAKE</a>
         </ul>
     </header>
     <h1 class="heading">ADAM SMASHER</h1>
@@ -146,6 +150,7 @@
         color: #ff0000;
         list-style-type: none;
         font-family: BlenderProBook;
+        text-decoration: none;
     }
     .line {
         height: 135%;
@@ -325,6 +330,30 @@
     }, 30);
     }
     document.getElementById("special5").onmouseover = event => {  
+    let iteration = 0;
+    
+    clearInterval(interval);
+    
+    interval = setInterval(() => {
+        event.target.innerText = event.target.innerText
+        .split("")
+        .map((letter, index) => {
+            if(index < iteration) {
+            return event.target.dataset.value[index];
+            }
+        
+            return letters[Math.floor(Math.random() * 26)]
+        })
+        .join("");
+        
+        if(iteration >= event.target.dataset.value.length){ 
+        clearInterval(interval);
+        }
+        
+        iteration += 1 / 3;
+    }, 30);
+    }
+    document.getElementById("special6").onmouseover = event => {  
     let iteration = 0;
     
     clearInterval(interval);
