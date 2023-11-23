@@ -35,14 +35,14 @@ router.get('/:id', async (req, res) => {
             break;
         case '2':
             console.log('Initializing Buy Power Up 2')
-            if (currentCoins < 500) {
+            if (currentCoins < 400) {
                 return res.redirect('/shop/errLessCoins')
             }
             currentItems.push('powerup2')
             await User.findOneAndUpdate({username: req.user.username}, {
                 $set: {
                     items: currentItems,
-                    coins: currentCoins - 500
+                    coins: currentCoins - 400
                 }
             })
             console.log(await User.findOne({username: req.user.username}))
@@ -51,14 +51,14 @@ router.get('/:id', async (req, res) => {
             break;
         case '3':
             console.log('Initializing Buy Power Up 3')
-            if (currentCoins < 1000) {
+            if (currentCoins < 600) {
                 return res.redirect('/shop/errLessCoins')
             }
             currentItems.push('powerup3')
             await User.findOneAndUpdate({username: req.user.username}, {
                 $set: {
                     items: currentItems,
-                    coins: currentCoins - 1000
+                    coins: currentCoins - 600
                 }
             })
             console.log(await User.findOne({username: req.user.username}))
@@ -67,18 +67,50 @@ router.get('/:id', async (req, res) => {
             break;
         case '4':
             console.log('Initializing Buy Power Up 4')
-            if (currentCoins < 50) {
+            if (currentCoins < 400) {
                 return res.redirect('/shop/errLessCoins')
             }
             currentItems.push('powerup4')
             await User.findOneAndUpdate({username: req.user.username}, {
                 $set: {
                     items: currentItems,
-                    coins: currentCoins - 50
+                    coins: currentCoins - 400
                 }
             })
             console.log(await User.findOne({username: req.user.username}))
             console.log("BOUGHT POWER UP 4")
+            res.redirect('/shop')
+            break;
+        case '5':
+            console.log('Initializing Buy Power Up 5')
+            if (currentCoins < 800) {
+                return res.redirect('/shop/errLessCoins')
+            }
+            currentItems.push('powerup5')
+            await User.findOneAndUpdate({username: req.user.username}, {
+                $set: {
+                    items: currentItems,
+                    coins: currentCoins - 800
+                }
+            })
+            console.log(await User.findOne({username: req.user.username}))
+            console.log("BOUGHT POWER UP 5")
+            res.redirect('/shop')
+            break;
+        case '6':
+            console.log('Initializing Buy Power Up 6')
+            if (currentCoins < 1200) {
+                return res.redirect('/shop/errLessCoins')
+            }
+            currentItems.push('powerup6')
+            await User.findOneAndUpdate({username: req.user.username}, {
+                $set: {
+                    items: currentItems,
+                    coins: currentCoins - 1200
+                }
+            })
+            console.log(await User.findOne({username: req.user.username}))
+            console.log("BOUGHT POWER UP 6")
             res.redirect('/shop')
             break;
         case 'errLessCoins':
