@@ -840,8 +840,12 @@
             getBox(7, 19).style.backgroundColor = 'red'
             const gameInterval = window.setInterval(function() {
                 if (gameOver) {
+                    const xhttp = new XMLHttpRequest()
                     clearInterval(gameInterval)
-                    alert("GAME OVER! You scored " + points + " points!")
+                    alert("GAME OVER! You scored " + points + " points! So, you earned " + (points*10) + " coins!")
+                    xhttp.open("POST", "/snake");
+                    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                    xhttp.send("score=" + points);
                     window.location.href='/snake'
                 }
                 if (movingDirection == 'right') moveRight()
