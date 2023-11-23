@@ -17,8 +17,10 @@ router.get('/', async (req,res) => {
 router.get('/submissions/:id', async (req,res) => {
     if (req.user.admin) {
         const reqSub = await hacks.findById(req.params.id);
+        const reqTeam = await teams.findOne({teamName: reqSub.teamName});
         console.log(reqSub);
-        res.render('submission', {submission: reqSub});
+        console.log(reqTeam);
+        res.render('submission', {submission: reqSub, reqTeam: reqTeam});
     }
     else {
         res.redirect('/');
@@ -27,29 +29,18 @@ router.get('/submissions/:id', async (req,res) => {
 
 router.post('/rank/:id', async (req,res) => {
     if (req.user.admin) {
-        const reqSub = await hacks.findById(req.params.id);
-        console.log(reqSub);
-        if (req.body.ranks === 1 || req.body.ranks === '1') {
-            var price = 210000
-        }
-        if (req.body.ranks === 2 || req.body.ranks === '2') {
-            var price = 140000
-        }
-        if (req.body.ranks === 3 || req.body.ranks === '3') {
-            var price = 70000
-        }
-        console.log(req.body.ranks)
-        await hacks.findOneAndUpdate({username: reqSub.username}, {
+        // const reqTeam = await teams.findOne({teamName: reqSub.teamName});
+        console.log('this is ',req.body)
+        await hacks.findByIdAndUpdate(req.params.id, {
             $set: {
-                rank: req.body.ranks,
-                price: price
+                prize: req.body.points
             }
         });
-        res.redirect('/admin');
+        res.redirect('/admin/submissions/'+req.params.id);
     }
     else {
         res.redirect('/');
     }
-})
+});
 
 module.exports = router

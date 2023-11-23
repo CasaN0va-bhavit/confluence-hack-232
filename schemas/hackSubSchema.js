@@ -15,14 +15,9 @@ const hackSubSchema = new Schema(
         },
         thumbnail: reqString,
         prize: {
-            type: String,
+            type: Number,
             required: false,
-            default: "no rank"
-        },
-        rank: {
-            type: String,
-            required: false,
-            default: "no rank"
+            default: 0
         },
         env: reqString,
         projectName: reqString,

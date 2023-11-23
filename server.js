@@ -11,17 +11,16 @@ const express = require('express'),
     {ensureAuthenticated, forwardAuthenticated} = require('./utils/authenticate')
 
 const indexRouter = require('./routers/indexRouter'),
-    regRouter = require('./routers/regRouter')
-    loginRouter = require('./routers/loginRouter')
-    dashboardRouter = require('./routers/dashboardRouter')
-    leaderboardRouter = require('./routers/leaderboardRouter')
-    adminRouter = require('./routers/adminRouter')
+    regRouter = require('./routers/regRouter'),
+    loginRouter = require('./routers/loginRouter'),
+    dashboardRouter = require('./routers/dashboardRouter'),
+    adminRouter = require('./routers/adminRouter'),
     hackSubRouter = require('./routers/hackSubRouter'),
     itemsRouter = require('./routers/shopRouter'),
     hackRegRouter = require('./routers/hackReg'),
     logoutRouter = require('./routers/logoutRouter'),
-    snakeRouter = require('./routers/snakeRouter')
-    breachPRouter = require('./routers/breachPRouter')
+    snakeRouter = require('./routers/snakeRouter'),
+    breachPRouter = require('./routers/breachPRouter');
 
 mongoose.connect(process.env.MONGO_URI, console.log('MONGODB CONNECTED'))
 
@@ -54,7 +53,6 @@ app.use('/', indexRouter)
 app.use('/login', forwardAuthenticated, loginRouter)
 app.use('/register', forwardAuthenticated, regRouter)
 app.use('/dashboard', ensureAuthenticated, dashboardRouter)
-app.use('/leaderboard', ensureAuthenticated, leaderboardRouter)
 app.use('/admin', ensureAuthenticated, adminRouter)
 app.use('/hack', ensureAuthenticated, hackSubRouter)
 app.use('/shop', ensureAuthenticated, itemsRouter)

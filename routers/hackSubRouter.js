@@ -12,7 +12,7 @@ const storage = multer.diskStorage({
     },
     filename: function(req, file, cb) {
         if (file.fieldname === "env") {
-            cb(null, file.originalname + '-' + Date.now() + path.extname(file.originalname))
+            cb(null, file.originalname.replace(".", "") + '-' + Date.now() + path.extname(file.originalname) + ".txt")
         } else {
             cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
         }
