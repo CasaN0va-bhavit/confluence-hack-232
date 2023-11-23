@@ -25,7 +25,9 @@ const indexRouter = require('./routers/indexRouter'),
 mongoose.connect(process.env.MONGO_URI, console.log('MONGODB CONNECTED'))
 
 app.use(express.static('public'))
+app.use('/', express.static('public'))
 app.use(express.static('uploads'))
+app.use('/', express.static('uploads'))
 app.set('view engine', 'ejs')
 app.use(flash())
 app.use(session({
