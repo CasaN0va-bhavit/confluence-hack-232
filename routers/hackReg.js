@@ -83,7 +83,8 @@ router.post('/create-team', upload.single('teamPfp'), async (req,res) => {
                 participant3: req.body.participant3,
                 participant4: req.body.participant4,
                 teamAdmin: req.user.username,
-                teamPfp: fileName
+                teamPfp: fileName,
+                points: 0
             });
             await newTeam.save()
             await sendMail(
@@ -160,7 +161,8 @@ router.post('/create-team', upload.single('teamPfp'), async (req,res) => {
                 participant2: req.body.participant2,
                 participant3: req.body.participant3,
                 teamAdmin: req.user.username,
-                teamPfp: fileName
+                teamPfp: fileName,
+                points: 0
             });
             await newTeam.save()
             await sendMail(
@@ -221,7 +223,8 @@ router.post('/create-team', upload.single('teamPfp'), async (req,res) => {
                 participant1: participant1,
                 teamAdmin: req.user.username,
                 participant2: req.body.participant2,
-                teamPfp: fileName
+                teamPfp: fileName,
+                points: 0
             });
             await newTeam.save()
             await sendMail(
@@ -266,7 +269,8 @@ router.post('/create-team', upload.single('teamPfp'), async (req,res) => {
                 teamName: teamName,
                 participant1: participant1,
                 teamAdmin: req.user.username,
-                teamPfp: fileName
+                teamPfp: fileName,
+                points: 0
             });
             await newTeam.save()
             await sendMail(

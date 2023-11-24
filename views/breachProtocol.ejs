@@ -6,10 +6,10 @@
     <title>Breach Protocol</title>
     <style>
         body {
-            height: 100vh;
+            height: auto;
             width: 100%;
             background-image: linear-gradient(#000615, #190000);
-            overflow: hidden;
+            overflow-x: hidden;
             display: flex;
             flex-direction: column;
         }
@@ -83,12 +83,19 @@
             transform: rotate(-40deg);
         }
         .bottom-vector {
-            position: absolute;
-            bottom: 0;
-            right: 1vw;
+            position: relative;
+            bottom: -1vw;
+            align-self: end;
+            right: 2vw;
+            width: 55vw;
+            margin-bottom: 0.5vw;
+        }
+        ::-webkit-scrollbar {
+            display: none;
         }
         .boxContainer {
             width: 95vw;
+            height: 67vh;
             margin: 0 auto;
             display: flex;
             justify-content: space-around;
