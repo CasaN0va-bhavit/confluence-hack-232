@@ -379,7 +379,7 @@ router.post('/leave/:id', async (req,res) => {
         reqTeam.teamAdmin, 
         `A person left your team!`, 
         `A person left your team!`, 
-        await ejs.renderFile(__dirname + "/../views/normalTeamEmail.ejs", {
+        await ejs.renderFile(__dirname + "/../views/leaveTeamEmail.ejs", {
             teamAdmin: reqTeam.teamAdmin,
             site: process.env.DOMAIN_NAME
         })
