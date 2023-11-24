@@ -290,6 +290,20 @@ router.post('/create-team', upload.single('teamPfp'), async (req,res) => {
                     domainName: process.env.DOMAIN_NAME
                 })
             )
+            await sendMail(
+                req.user.username, 
+                `You Created the Team ${teamName}`, 
+                `You Created the Team ${teamName}`, 
+                await ejs.renderFile(__dirname + "/../views/adminTeamEmail.ejs", {
+                    teamName: teamName,
+                    teamAdmin: req.user.username,
+                    participant1: participant1,
+                    participant2: req.body.participant2,
+                    participant3: req.body.participant3,
+                    participant4: req.body.participant4,
+                    domainName: process.env.DOMAIN_NAME
+                })
+            )
             res.redirect('/hackReg')
         }
     } else {

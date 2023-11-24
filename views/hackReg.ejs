@@ -237,7 +237,7 @@
                                 <path d="M781 1H1.00001V69H727.713L781 1Z" stroke="#FF0000"/>
                                 <path d="M784 27.1756V4L733 70H750.966L784 27.1756Z" fill="#FF0000"/>
                             </svg>                  
-                            <input type="text" placeholder="Enter team name" required class="participant-email" oninput="teamInputEvent()" id="teamInput">
+                            <input type="text" value="<%= reqTeam.teamName %>" placeholder="Enter team name" required class="participant-email" oninput="teamInputEvent()" id="teamInput">
                         </div>
                         <div class="one">
                             <svg class="input-svg" width="784" height="70" viewBox="0 0 784 70" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -280,7 +280,7 @@
                                 <path d="M175 186L191.5 169.5H210L193.5 186H175Z" fill="white"/>
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M0.5 0.5H218.5V164.117H162.042L139.589 186.5H0.5V0.5ZM1.5 1.5V185.5H139.176L161.629 163.117H217.5V1.5H1.5ZM164.793 169H184.707L167.207 186.5H147.293L164.793 169ZM165.207 170L149.707 185.5H166.793L182.293 170H165.207ZM191.293 169H211.207L193.707 186.5H173.793L191.293 169ZM191.707 170L176.207 185.5H193.293L208.793 170H191.707Z" fill="white"/>
                             </svg>
-                        <p class="smth" id="teamName">TEAM NAME</p>
+                        <p class="smth" id="teamName"><%= reqTeam.teamName %></p>
                         <label for="teamPfp">Click here to upload pfp</label>
                         <input type="file"  name="teamPfp" id="teamPfp" style="display: none;">
                     </form>
@@ -422,7 +422,7 @@
     .special-text {
         font-family: BlenderProHeavy !important;
         color: white !important;
-        font-size: 2vw;
+        font-size: 1vw;
     }
     @font-face 
     {
@@ -566,6 +566,7 @@
         font-family: BlenderProBook;
         color: #7E7E7E;
         margin-left: 2vw;
+        /* width: 50%; */
         position: absolute;
     }
     .team-name-svg {
