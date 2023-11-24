@@ -101,7 +101,7 @@
         align-items: center;
     }
     .playAreaKaBaap {
-        -path: polygon(0% 0, 90% 0%, 100% 21%, 100% 100%, 0 100%);clip
+        clip-path: polygon(0% 0, 90% 0%, 100% 21%, 100% 100%, 0 100%);
         width: calc(62vw - 4px);
         height: calc(55vh - 4px);
         display: flex;
@@ -916,192 +916,211 @@
                 }
             })
             function moveRight() {
-                if (pastDirection == 'up') {
-                    mainCoords = [coords[coords.length - 1][0], coords[coords.length - 1][1]]
-                    if (mainCoords[0] >= 30) {
-                        gameOver = true;
-                    };
-                    for (let i = 0; i < coords.length; i++) {
-                        if (mainCoords[1] == coords[i][1]) {
+                try {
+                    if (pastDirection == 'up') {
+                        mainCoords = [coords[coords.length - 1][0], coords[coords.length - 1][1]]
+                        if (mainCoords[0] >= 30) {
+                            gameOver = true;
+                        };
+                        for (let i = 0; i < coords.length; i++) {
+                            if (mainCoords[1] == coords[i][1]) {
+                                getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
+                                getBox(coords[i][0] + 1, coords[i][1]).style.backgroundColor = 'red'
+                                coords[i] = [coords[i][0] + 1, coords[i][1]]
+                            } else {
+                                getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
+                                getBox(coords[i][0], coords[i][1] - 1).style.backgroundColor = 'red'
+                                coords[i] = [coords[i][0], coords[i][1] - 1]
+                            }
+                        }
+                    } else if (pastDirection == 'down') {
+                        mainCoords = [coords[coords.length - 1][0], coords[coords.length - 1][1]]
+                        if (mainCoords[0] >= 30) {
+                            gameOver = true;
+                        };
+                        for (let i = 0; i < coords.length; i++) {
+                            if (mainCoords[1] == coords[i][1]) {
+                                getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
+                                getBox(coords[i][0] + 1, coords[i][1]).style.backgroundColor = 'red'
+                                coords[i] = [coords[i][0] + 1, coords[i][1]]
+                            } else {
+                                getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
+                                getBox(coords[i][0], coords[i][1] + 1).style.backgroundColor = 'red'
+                                coords[i] = [coords[i][0], coords[i][1] + 1]
+                            }
+                        }
+                    } else {
+                        mainCoords = [coords[coords.length - 1][0], coords[coords.length - 1][1]]
+                        if (mainCoords[0] >= 30) {
+                            gameOver = true;
+                        };
+                        for (let i = 0; i < coords.length; i++) {
                             getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
                             getBox(coords[i][0] + 1, coords[i][1]).style.backgroundColor = 'red'
                             coords[i] = [coords[i][0] + 1, coords[i][1]]
-                        } else {
-                            getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
-                            getBox(coords[i][0], coords[i][1] - 1).style.backgroundColor = 'red'
-                            coords[i] = [coords[i][0], coords[i][1] - 1]
                         }
                     }
-                } else if (pastDirection == 'down') {
-                    mainCoords = [coords[coords.length - 1][0], coords[coords.length - 1][1]]
-                    if (mainCoords[0] >= 30) {
-                        gameOver = true;
-                    };
-                    for (let i = 0; i < coords.length; i++) {
-                        if (mainCoords[1] == coords[i][1]) {
-                            getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
-                            getBox(coords[i][0] + 1, coords[i][1]).style.backgroundColor = 'red'
-                            coords[i] = [coords[i][0] + 1, coords[i][1]]
-                        } else {
-                            getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
-                            getBox(coords[i][0], coords[i][1] + 1).style.backgroundColor = 'red'
-                            coords[i] = [coords[i][0], coords[i][1] + 1]
-                        }
-                    }
-                } else {
-                    mainCoords = [coords[coords.length - 1][0], coords[coords.length - 1][1]]
-                    if (mainCoords[0] >= 30) {
-                        gameOver = true;
-                    };
-                    for (let i = 0; i < coords.length; i++) {
-                        getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
-                        getBox(coords[i][0] + 1, coords[i][1]).style.backgroundColor = 'red'
-                        coords[i] = [coords[i][0] + 1, coords[i][1]]
-                    }
+                } catch (err) {
+                    gameOver = true
                 }
             }
             function moveDown() {
-                if (pastDirection == 'right') {
-                    mainCoords = [coords[coords.length - 1][0], coords[coords.length-1][1]]
-                    if (mainCoords[1] >= 20) {
-                        gameOver = true;
-                    };
-                    console.log(mainCoords)
-                    for (let i = 0; i < coords.length; i++) {
-                        if (mainCoords[0] == coords[i][0]) {
+                try {
+                    
+                    if (pastDirection == 'right') {
+                        mainCoords = [coords[coords.length - 1][0], coords[coords.length-1][1]]
+                        if (mainCoords[1] >= 20) {
+                            gameOver = true;
+                        };
+                        console.log(mainCoords)
+                        for (let i = 0; i < coords.length; i++) {
+                            if (mainCoords[0] == coords[i][0]) {
+                                getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
+                                getBox(coords[i][0], coords[i][1] + 1).style.backgroundColor = 'red'
+                                coords[i] = [coords[i][0], coords[i][1] + 1]
+                            } else {
+                                getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
+                                getBox(coords[i][0] + 1, coords[i][1]).style.backgroundColor = 'red'
+                                coords[i] = [coords[i][0] + 1, coords[i][1]]
+                            }
+                        }
+                    } else if (pastDirection == 'left') {
+                        mainCoords = [coords[coords.length - 1][0], coords[coords.length-1][1]]
+                        if (mainCoords[1] >= 20) {
+                            gameOver = true;
+                        };
+                        console.log(mainCoords)
+                        for (let i = 0; i < coords.length; i++) {
+                            if (mainCoords[0] == coords[i][0]) {
+                                getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
+                                getBox(coords[i][0], coords[i][1] + 1).style.backgroundColor = 'red'
+                                coords[i] = [coords[i][0], coords[i][1] + 1]
+                            } else {
+                                getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
+                                getBox(coords[i][0] - 1, coords[i][1]).style.backgroundColor = 'red'
+                                coords[i] = [coords[i][0] - 1, coords[i][1]]
+                            }
+                        }
+                    } else {
+                        mainCoords = [coords[coords.length - 1][0], coords[coords.length - 1][1]]
+                        if (mainCoords[1] >= 20) {
+                            gameOver = true;
+                        };
+                        for (let i = 0; i < coords.length; i++) {
                             getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
                             getBox(coords[i][0], coords[i][1] + 1).style.backgroundColor = 'red'
                             coords[i] = [coords[i][0], coords[i][1] + 1]
-                        } else {
-                            getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
-                            getBox(coords[i][0] + 1, coords[i][1]).style.backgroundColor = 'red'
-                            coords[i] = [coords[i][0] + 1, coords[i][1]]
                         }
                     }
-                } else if (pastDirection == 'left') {
-                    mainCoords = [coords[coords.length - 1][0], coords[coords.length-1][1]]
-                    if (mainCoords[1] >= 20) {
-                        gameOver = true;
-                    };
-                    console.log(mainCoords)
-                    for (let i = 0; i < coords.length; i++) {
-                        if (mainCoords[0] == coords[i][0]) {
-                            getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
-                            getBox(coords[i][0], coords[i][1] + 1).style.backgroundColor = 'red'
-                            coords[i] = [coords[i][0], coords[i][1] + 1]
-                        } else {
-                            getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
-                            getBox(coords[i][0] - 1, coords[i][1]).style.backgroundColor = 'red'
-                            coords[i] = [coords[i][0] - 1, coords[i][1]]
-                        }
-                    }
-                } else {
-                    mainCoords = [coords[coords.length - 1][0], coords[coords.length - 1][1]]
-                    if (mainCoords[1] >= 20) {
-                        gameOver = true;
-                    };
-                    for (let i = 0; i < coords.length; i++) {
-                        getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
-                        getBox(coords[i][0], coords[i][1] + 1).style.backgroundColor = 'red'
-                        coords[i] = [coords[i][0], coords[i][1] + 1]
-                    }
+                } catch (error) {
+                    gameOver = true
                 }
             }
             function moveUp() {
-                if (pastDirection == 'right') {
-                    mainCoords = [coords[coords.length - 1][0], coords[coords.length-1][1]]
-                    if (mainCoords[1] <= 1) {
-                        gameOver = true;
-                    };
-                    console.log(mainCoords)
-                    for (let i = 0; i < coords.length; i++) {
-                        console.log("Main Coords", mainCoords[1])
-                        console.log("coords i", coords[i])
-                        if (mainCoords[0] == coords[i][0]) {
+                try {
+                    
+                    if (pastDirection == 'right') {
+                        mainCoords = [coords[coords.length - 1][0], coords[coords.length-1][1]]
+                        if (mainCoords[1] <= 1) {
+                            gameOver = true;
+                        };
+                        console.log(mainCoords)
+                        for (let i = 0; i < coords.length; i++) {
+                            console.log("Main Coords", mainCoords[1])
+                            console.log("coords i", coords[i])
+                            if (mainCoords[0] == coords[i][0]) {
+                                getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
+                                getBox(coords[i][0], coords[i][1] - 1).style.backgroundColor = 'red'
+                                coords[i] = [coords[i][0], coords[i][1] -1]
+                            } else {
+                                getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
+                                getBox(coords[i][0] + 1, coords[i][1]).style.backgroundColor = 'red'
+                                coords[i] = [coords[i][0] + 1, coords[i][1]]
+                            }
+                        }
+                    } else if (pastDirection == 'left') {
+                        mainCoords = [coords[coords.length - 1][0], coords[coords.length-1][1]]
+                        if (mainCoords[1] <= 1) {
+                            gameOver = true;
+                        };
+                        console.log(mainCoords)
+                        for (let i = 0; i < coords.length; i++) {
+                            if (mainCoords[0] == coords[i][0]) {
+                                getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
+                                getBox(coords[i][0], coords[i][1] - 1).style.backgroundColor = 'red'
+                                coords[i] = [coords[i][0], coords[i][1] - 1]
+                            } else {
+                                getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
+                                getBox(coords[i][0] - 1, coords[i][1]).style.backgroundColor = 'red'
+                                coords[i] = [coords[i][0] - 1, coords[i][1]]
+                            }
+                        }
+                    } else {
+                        mainCoords = [coords[coords.length - 1][0], coords[coords.length - 1][1]]
+                        if (mainCoords[1] <= 1) {
+                            gameOver = true;
+                        };
+                        for (let i = 0; i < coords.length; i++) {
                             getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
                             getBox(coords[i][0], coords[i][1] - 1).style.backgroundColor = 'red'
                             coords[i] = [coords[i][0], coords[i][1] -1]
-                        } else {
-                            getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
-                            getBox(coords[i][0] + 1, coords[i][1]).style.backgroundColor = 'red'
-                            coords[i] = [coords[i][0] + 1, coords[i][1]]
                         }
                     }
-                } else if (pastDirection == 'left') {
-                    mainCoords = [coords[coords.length - 1][0], coords[coords.length-1][1]]
-                    if (mainCoords[1] <= 1) {
-                        gameOver = true;
-                    };
-                    console.log(mainCoords)
-                    for (let i = 0; i < coords.length; i++) {
-                        if (mainCoords[0] == coords[i][0]) {
-                            getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
-                            getBox(coords[i][0], coords[i][1] - 1).style.backgroundColor = 'red'
-                            coords[i] = [coords[i][0], coords[i][1] - 1]
-                        } else {
-                            getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
-                            getBox(coords[i][0] - 1, coords[i][1]).style.backgroundColor = 'red'
-                            coords[i] = [coords[i][0] - 1, coords[i][1]]
-                        }
-                    }
-                } else {
-                    mainCoords = [coords[coords.length - 1][0], coords[coords.length - 1][1]]
-                    if (mainCoords[1] <= 1) {
-                        gameOver = true;
-                    };
-                    for (let i = 0; i < coords.length; i++) {
-                        getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
-                        getBox(coords[i][0], coords[i][1] - 1).style.backgroundColor = 'red'
-                        coords[i] = [coords[i][0], coords[i][1] -1]
-                    }
+                    
+                } catch (error) {
+                    gameOver = true
                 }
-                
             }
             function moveLeft() {
-                if (pastDirection == 'up') {
-                    mainCoords = [coords[coords.length - 1][0], coords[coords.length - 1][1]]
-                    if (mainCoords[0] <= 1) {
-                        gameOver = true;
-                    };
-                    for (let i = 0; i < coords.length; i++) {
-                        if (mainCoords[1] == coords[i][1]) {
+                try {
+                    if (pastDirection == 'up') {
+                        mainCoords = [coords[coords.length - 1][0], coords[coords.length - 1][1]]
+                        if (mainCoords[0] <= 1) {
+                            gameOver = true;
+                        };
+                        for (let i = 0; i < coords.length; i++) {
+                            if (mainCoords[1] == coords[i][1]) {
+                                getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
+                                getBox(coords[i][0] - 1, coords[i][1]).style.backgroundColor = 'red'
+                                coords[i] = [coords[i][0] - 1, coords[i][1]]
+                            } else {
+                                getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
+                                getBox(coords[i][0], coords[i][1] - 1).style.backgroundColor = 'red'
+                                coords[i] = [coords[i][0], coords[i][1] - 1]
+                            }
+                        }
+                    } else if (pastDirection == 'down') {
+                        mainCoords = [coords[coords.length - 1][0], coords[coords.length - 1][1]]
+                        if (mainCoords[0] <= 1) {
+                            gameOver = true;
+                        };
+                        for (let i = 0; i < coords.length; i++) {
+                            if (mainCoords[1] == coords[i][1]) {
+                                getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
+                                getBox(coords[i][0] - 1, coords[i][1]).style.backgroundColor = 'red'
+                                coords[i] = [coords[i][0] - 1, coords[i][1]]
+                            } else {
+                                getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
+                                getBox(coords[i][0], coords[i][1] + 1).style.backgroundColor = 'red'
+                                coords[i] = [coords[i][0], coords[i][1] + 1]
+                            }
+                        }
+                    } else {
+                        mainCoords = [coords[coords.length - 1][0], coords[coords.length - 1][1]]
+                        if (mainCoords[0] <= 1) {
+                            gameOver = true;
+                        };
+                        for (let i = 0; i < coords.length; i++) {
                             getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
                             getBox(coords[i][0] - 1, coords[i][1]).style.backgroundColor = 'red'
                             coords[i] = [coords[i][0] - 1, coords[i][1]]
-                        } else {
-                            getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
-                            getBox(coords[i][0], coords[i][1] - 1).style.backgroundColor = 'red'
-                            coords[i] = [coords[i][0], coords[i][1] - 1]
                         }
                     }
-                } else if (pastDirection == 'down') {
-                    mainCoords = [coords[coords.length - 1][0], coords[coords.length - 1][1]]
-                    if (mainCoords[0] <= 1) {
-                        gameOver = true;
-                    };
-                    for (let i = 0; i < coords.length; i++) {
-                        if (mainCoords[1] == coords[i][1]) {
-                            getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
-                            getBox(coords[i][0] - 1, coords[i][1]).style.backgroundColor = 'red'
-                            coords[i] = [coords[i][0] - 1, coords[i][1]]
-                        } else {
-                            getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
-                            getBox(coords[i][0], coords[i][1] + 1).style.backgroundColor = 'red'
-                            coords[i] = [coords[i][0], coords[i][1] + 1]
-                        }
-                    }
-                } else {
-                    mainCoords = [coords[coords.length - 1][0], coords[coords.length - 1][1]]
-                    if (mainCoords[0] <= 1) {
-                        gameOver = true;
-                    };
-                    for (let i = 0; i < coords.length; i++) {
-                        getBox(coords[i][0], coords[i][1]).style.backgroundColor = 'inherit'
-                        getBox(coords[i][0] - 1, coords[i][1]).style.backgroundColor = 'red'
-                        coords[i] = [coords[i][0] - 1, coords[i][1]]
-                    }
+                } catch (error) {
+                    gameOver = true
                 }
-            }
+                    
+                }
         }
         function getBox(x, y) {
             const rows = document.getElementsByClassName('row')

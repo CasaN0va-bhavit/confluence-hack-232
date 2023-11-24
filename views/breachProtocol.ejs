@@ -131,12 +131,32 @@
             padding: 10px 0;
             font-family: BlenderProBook;
             font-size: 1.3em;
+            border: 2px solid transparent;
+            cursor: pointer;
         }
         #sequenceTable {
             width: auto;
         }
         #sequenceTable td {
             padding: 10px 20px;
+        }
+        #matrix td:hover {
+            border: 2px solid cyan;
+        }
+        .timeContainer {
+            border: 1px solid red;
+            min-width: 10vw;
+            padding: 10px 10px;
+            margin-bottom: 10px;
+            align-self: flex-end;
+            font-family: BlenderProBook;
+            font-size: 1.5em;
+            text-align: center;
+            color: white;
+        }
+        .matrix {
+            display: flex;
+            flex-direction: column;
         }
     </style>
 </head>
@@ -177,65 +197,67 @@
     </svg>
     <div class="boxContainer">
         <div class="matrix">
+            <div class="timeContainer" id="timeContainer">8:00</div>
             <div class="mainBreach">
                 <div class="breachKaBeta">
                     <p>COD3 M4TR1X</p>
                 </div>
             </div>
             <div class="mainBox">
-                <table id="matrix">
-                    <tr class="matrixRow">
-                        <td class="one"></td>
-                        <td class="two"></td>
-                        <td class="three"></td>
-                        <td class="four"></td>
-                        <td class="five"></td>
-                        <td class="six"></td>
+                <table id="matrix" cellspacing=0>
+                    <tr class="matrixRow" id="firstRow" style="background-color: #333">
+                        <td class="one" onclick="inputSequence(event)"></td>
+                        <td class="two" onclick="inputSequence(event)"></td>
+                        <td class="three" onclick="inputSequence(event)"></td>
+                        <td class="four" onclick="inputSequence(event)"></td>
+                        <td class="five" onclick="inputSequence(event)"></td>
+                        <td class="six" onclick="inputSequence(event)"></td>
                     </tr>
                     <tr class="matrixRow">
-                        <td class="one"></td>
-                        <td class="two"></td>
-                        <td class="three"></td>
-                        <td class="four"></td>
-                        <td class="five"></td>
-                        <td class="six"></td>
+                        <td class="one" onclick="inputSequence(event)"></td>
+                        <td class="two" onclick="inputSequence(event)"></td>
+                        <td class="three" onclick="inputSequence(event)"></td>
+                        <td class="four" onclick="inputSequence(event)"></td>
+                        <td class="five" onclick="inputSequence(event)"></td>
+                        <td class="six" onclick="inputSequence(event)"></td>
                     </tr>
                     <tr class="matrixRow">
-                        <td class="one"></td>
-                        <td class="two"></td>
-                        <td class="three"></td>
-                        <td class="four"></td>
-                        <td class="five"></td>
-                        <td class="six"></td>
+                        <td class="one" onclick="inputSequence(event)"></td>
+                        <td class="two" onclick="inputSequence(event)"></td>
+                        <td class="three" onclick="inputSequence(event)"></td>
+                        <td class="four" onclick="inputSequence(event)"></td>
+                        <td class="five" onclick="inputSequence(event)"></td>
+                        <td class="six" onclick="inputSequence(event)"></td>
                     </tr>
                     <tr class="matrixRow">
-                        <td class="one"></td>
-                        <td class="two"></td>
-                        <td class="three"></td>
-                        <td class="four"></td>
-                        <td class="five"></td>
-                        <td class="six"></td>
+                        <td class="one" onclick="inputSequence(event)"></td>
+                        <td class="two" onclick="inputSequence(event)"></td>
+                        <td class="three" onclick="inputSequence(event)"></td>
+                        <td class="four" onclick="inputSequence(event)"></td>
+                        <td class="five" onclick="inputSequence(event)"></td>
+                        <td class="six" onclick="inputSequence(event)"></td>
                     </tr>
                     <tr class="matrixRow">
-                        <td class="one"></td>
-                        <td class="two"></td>
-                        <td class="three"></td>
-                        <td class="four"></td>
-                        <td class="five"></td>
-                        <td class="six"></td>
+                        <td class="one" onclick="inputSequence(event)"></td>
+                        <td class="two" onclick="inputSequence(event)"></td>
+                        <td class="three" onclick="inputSequence(event)"></td>
+                        <td class="four" onclick="inputSequence(event)"></td>
+                        <td class="five" onclick="inputSequence(event)"></td>
+                        <td class="six" onclick="inputSequence(event)"></td>
                     </tr>
                     <tr class="matrixRow">
-                        <td class="one"></td>
-                        <td class="two"></td>
-                        <td class="three"></td>
-                        <td class="four"></td>
-                        <td class="five"></td>
-                        <td class="six"></td>
+                        <td class="one" onclick="inputSequence(event)"></td>
+                        <td class="two" onclick="inputSequence(event)"></td>
+                        <td class="three" onclick="inputSequence(event)"></td>
+                        <td class="four" onclick="inputSequence(event)"></td>
+                        <td class="five" onclick="inputSequence(event)"></td>
+                        <td class="six" onclick="inputSequence(event)"></td>
                     </tr>
                 </table>
             </div>
         </div>
         <div class="sequences">
+            <div class="timeContainer" style="visibility: hidden;">8:00</div>
             <div class="mainBreach">
                 <div class="breachKaBeta">
                     <p>S3QU3NC3 R3QU1R3D</p>
@@ -244,19 +266,19 @@
             <div class="mainBox">
                 <table id="sequenceTable">
                     <tr class=sequenceRow>
-                        <td class="one"></td>
-                        <td class="two"></td>
-                        <td class="three"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <tr class="sequenceRow">
-                        <td class="one"></td>
-                        <td class="two"></td>
-                        <td class="three"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <tr class="sequenceRow">
-                        <td class="one"></td>
-                        <td class="two"></td>
-                        <td class="three"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                 </table>
             </div>
@@ -272,11 +294,17 @@
         const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]
         const chars = ['A', 'B', 'C', 'D', 'E', 'F']
         const sequences = []
-        const sequencesTxt = []
+        const selectedSequences = []
+        var numberOfSelectedSequences = 0
+        var sequencesTxt = []
+        var timer = 8;
+        var failed = false;
         sequences.push(getRandomSequence())
         sequences.push(getRandomSequence())
         sequences.push(getRandomSequence())
+        var firstElement, secondElement, thirdElement
         console.log(sequences)
+        
         window.onload = function() {
             const matrixRows = document.querySelectorAll('.matrixRow'),
                 sequenceRows = document.querySelectorAll('.sequenceRow')
@@ -303,6 +331,7 @@
                     document.getElementsByClassName('sequenceRow')[2].children[0].innerText = sequence3text[0]
                     document.getElementsByClassName('sequenceRow')[2].children[1].innerText = sequence3text[1]
                     document.getElementsByClassName('sequenceRow')[2].children[2].innerText = sequence3text[2]
+                    sequencesTxt = [sequence1text, sequence2text, sequence3text]
                 }
             }
         }
@@ -325,7 +354,84 @@
             }
             return [sequence1, sequence2, sequence3]
         }
-        function getSequenceText() {
+        function inputSequence(event) {
+            const selectedText = event.target.innerText
+            switch (numberOfSelectedSequences) {
+                case 0:
+                    startBreach()
+                    if (event.target.parentElement == document.getElementById('firstRow')) {
+                        selectedSequences.push(selectedText)
+                        numberOfSelectedSequences += 1
+                        firstElement = event.target
+                        document.getElementById('firstRow').style.backgroundColor = 'inherit'
+                        const myClasses = event.target.className
+                        for (let j = 0; j < document.getElementsByClassName(myClasses).length; j++) {
+                            document.getElementsByClassName(myClasses)[j].style.backgroundColor = '#333';
+                        }
+                    } else {
+                        return;
+                    }
+                    break;
+                case 1:
+                    if (event.target.className == firstElement.className) {
+                        selectedSequences.push(selectedText)
+                        numberOfSelectedSequences += 1
+                        secondElement = event.target
+                        for (let j = 0; j < document.getElementsByClassName(secondElement.className).length; j++) {
+                            document.getElementsByClassName(secondElement.className)[j].style.backgroundColor = 'inherit'
+                        }
+                        secondElement.parentElement.style.backgroundColor = '#333'
+                    } else {
+                        return
+                    }
+                    break;
+                case 2:
+                    if (event.target.parentElement == secondElement.parentElement) {
+                        selectedSequences.push(selectedText)
+                        numberOfSelectedSequences += 1
+                        thirdElement = event.target
+                        confirmSequences()
+                    } else return
+                    break;
+                default:
+                    return;
+            }
+            console.log(selectedSequences)
+        }
+        function confirmSequences() {
+            for (let i = 0; i < sequencesTxt.length; i++) {
+                if (selectedSequences[0] == sequencesTxt[i][0] && selectedSequences[1] == sequencesTxt[i][1] && selectedSequences[2] == sequencesTxt[i][2]) {
+                    return successfulBreach()
+                } else {
+                    if (i == 2) return failureBreach()
+                    if (i < 2) continue;
+                }
+            }
+            console.log(sequencesTxt)
+        }
+        function startBreach() {
+        const timerInterval = window.setInterval(function() {
+            if (timer <= 0.01 || failed) {
+                clearInterval(timerInterval)
+                failedBreach()
+            };
+            const timerElement = document.getElementById('timeContainer')
+            const newTime = (timer - 0.01).toFixed(2)
+            timer -= 0.01
+            timerElement.innerText = newTime
+        }, 10)
+        }
+        function successfulBreach() {
+            const xhttp = new XMLHttpRequest()
+            xhttp.open("POST", "/breachProtocol");
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send("success=yes");
+            alert("SUCCESSFUL BREACH! YOU EARNED 20 COINS!")
+            window.location.href='/breachProtocol'
+        }
+        function failedBreach() {
+            alert('FAILURE! BETTER LUCK NEXT TIME!')
+            window.location.href = '/breachProtocol'
         }
     </script>
 </body>

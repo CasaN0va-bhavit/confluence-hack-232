@@ -23,7 +23,8 @@
                 <path d="M239.516 9.57451C233.161 8.72495 225.578 12.3013 226.851 19.9399C227.441 23.4717 230.501 25.8905 233.896 26.8068C235.966 27.3633 238.489 27.1927 240.774 27.1741C240.837 27.1729 240.9 27.1844 240.96 27.208C241.019 27.2316 241.073 27.2667 241.119 27.3114L243.89 30.0418C243.989 30.1383 244.039 30.2558 244.039 30.3943L244.053 35.8886C244.053 35.9142 244.043 35.9387 244.025 35.9568C244.007 35.9749 243.983 35.985 243.957 35.985C240.977 36.0023 237.999 35.9986 235.024 35.9739C229.192 35.9294 223.404 32.3642 220.384 27.6119C214.515 18.3669 218.656 7.34489 228.079 2.62594C232.898 0.214527 237.906 0.748745 243.093 0.745035C243.295 0.744979 243.489 0.823462 243.634 0.963915L254.089 11.0696C254.22 11.1975 254.325 11.3504 254.396 11.5193C254.467 11.6882 254.504 11.8695 254.504 12.0527L254.5 35.8033C254.5 35.9269 254.439 35.9887 254.315 35.9887L245.697 35.9962C245.568 35.9962 245.504 35.9319 245.504 35.8033C245.494 29.306 245.494 22.8138 245.504 16.3265C245.508 14.9538 245.192 14.9353 244.15 13.9039C242.725 12.4942 241.286 11.1017 239.832 9.72661C239.743 9.64252 239.637 9.59182 239.516 9.57451Z" fill="white"/>
               </svg>
         </div>
-        <ul class="nav-menu">
+        <div class="uncollapsed" onmouseover="showMenu(event)" id="showMenu">Show Menu</div>
+        <ul class="nav-menu" id="navmenu">
             <% if(!user) { %>
                 <a class="nav-item" id="special" href='/register' data-value="REGISTER">REGISTER</a>
                 <li class="nav-item" style="height: 100%;"><div class="line"></div></li>
@@ -101,6 +102,14 @@
         display: flex;
         flex-direction: column;
     }
+    .uncollapsed {
+        padding: 10px;
+        border: 2px solid red;
+        color: red;
+        font-family: BlenderProBook;
+        position: absolute;
+        right: 20px;
+    }
     ::-webkit-scrollbar {
         display: none;
     }
@@ -150,6 +159,12 @@
         gap: 2vw;
         margin-left: 8vw;
         margin-right: -3vw;
+        transform: scale(0, 1);
+        transform-origin: 100%;
+        transition: transform 1s;
+    }
+    .nav-menu:hover {
+        transform: scale(1, 1)
     }
     .nav-item {
         color: #ff0000;
@@ -403,5 +418,10 @@
         document.getElementById('rectangle2').style.marginLeft = event.pageX + 'px';
         document.getElementById('coords').innerHTML = `${event.pageX}, ${event.pageY}`
     })
+    function showMenu() {
+        event.target.style.display = 'none'
+        document.getElementById('navmenu').style.display = 'flex'
+        document.getElementById('navmenu').style.transform = 'scale(1, 1)'
+    }
 </script>
 </html>
