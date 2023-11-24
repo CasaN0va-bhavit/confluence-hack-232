@@ -292,9 +292,9 @@ router.post('/create-team', upload.single('teamPfp'), async (req,res) => {
 
 router.post('/editTeam/:id', async (req,res) => {
     const {teamName,  participant1} = req.body
-    if (!req.file) {
-        error = "Please upload a team pfp."
-    }
+    // if (!req.file) {
+    //     error = "Please upload a team pfp."
+    // }
     if (req.body.participant2 !== undefined || req.body.participant2 !== "") {
         await teams.findByIdAndUpdate(req.params.id, {
             $set: {

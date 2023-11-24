@@ -31,9 +31,10 @@ router.post('/rank/:id', async (req,res) => {
     if (req.user.admin) {
         // const reqTeam = await teams.findOne({teamName: reqSub.teamName});
         console.log('this is ',req.body)
-        await hacks.findByIdAndUpdate(req.params.id, {
+        const reqHack = await hacks.findById(req.params.id)
+        await teams.findByIdAndUpdate(reqHack.id, {
             $set: {
-                prize: req.body.points
+                points: req.body.points
             }
         });
         res.redirect('/admin/submissions/'+req.params.id);

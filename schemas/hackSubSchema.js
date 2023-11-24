@@ -16,7 +16,7 @@ const hackSubSchema = new Schema(
         thumbnail: reqString,
         prize: {
             type: Number,
-            required: false,
+            required: true,
             default: 0
         },
         env: reqString,

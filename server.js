@@ -20,6 +20,7 @@ const indexRouter = require('./routers/indexRouter'),
     hackRegRouter = require('./routers/hackReg'),
     logoutRouter = require('./routers/logoutRouter'),
     snakeRouter = require('./routers/snakeRouter'),
+    lbRouter = require('./routers/lbRouter'),
     breachPRouter = require('./routers/breachPRouter');
 
 mongoose.connect(process.env.MONGO_URI, console.log('MONGODB CONNECTED'))
@@ -62,6 +63,7 @@ app.use('/hackReg', ensureAuthenticated, hackRegRouter)
 app.use('/logout', ensureAuthenticated, logoutRouter)
 app.use('/snake', ensureAuthenticated, snakeRouter)
 app.use('/breachProtocol', ensureAuthenticated, breachPRouter)
+app.use('/lb', ensureAuthenticated, lbRouter)
 
 app.get('/logout', (req, res) => {
     req.logout();
