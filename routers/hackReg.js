@@ -335,4 +335,56 @@ router.post('/editTeam/:id', async (req,res) => {
     res.redirect('/hackReg');
 });
 
+router.post('/leave/:id', async (req,res) => {
+    const reqTeam = await teams.findById(req.params.id);
+    async function checkParticipant(participant) {
+        if (req.user.username === participant) {
+            if (!reqTeam.participant2 && !reqTeam.participant3 && !reqTeam.participant4) {
+                await teams.findByIdAndUpdate(req.params.id, {
+                    $set: {
+                        participant1: reqTeam.teamAdmin
+                    }
+                })
+            } else {
+                if (reqTeam.participant2 === participant) {
+                    await teams.findByIdAndUpdate(req.params.id, {
+                        $set: {
+                            participant2: ""
+                        }
+                    })
+                }
+                if (reqTeam.participant3 === participant) {
+                    await teams.findByIdAndUpdate(req.params.id, {
+                        $set: {
+                            participant3: ""
+                        }
+                    })
+                }
+                if (reqTeam.participant4 === participant) {
+                    await teams.findByIdAndUpdate(req.params.id, {
+                        $set: {
+                            participant4: ""
+                        }
+                    })
+                }
+            }
+        }
+    }
+    checkParticipant(reqTeam.participant1);
+    checkParticipant(reqTeam.participant2)
+    checkParticipant(reqTeam.participant3)
+    checkParticipant(reqTeam.participant4)
+    console.log('deleted user')
+    await sendMail(
+        reqTeam.teamAdmin, 
+        `A person left your team!`, 
+        `A person left your team!`, 
+        await ejs.renderFile(__dirname + "/../views/normalTeamEmail.ejs", {
+            teamAdmin: reqTeam.teamAdmin,
+            site: process.env.DOMAIN_NAME
+        })
+    )
+    res.redirect('/hackReg')
+});
+
 module.exports = router;
