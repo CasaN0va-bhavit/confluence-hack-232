@@ -45,6 +45,9 @@ router.post('/create-team', upload.single('teamPfp'), async (req,res) => {
     if(!req.file) {
         error = "Please upload a profile picture of your team";   
     }
+    if(teamName.length > 15) {
+        error = "The limit for the team name is only 15 characters.";   
+    }
     const fileName = req.file.filename
     // console.log(req.body)
     async function someFunction (participant) {

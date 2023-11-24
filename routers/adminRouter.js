@@ -32,7 +32,7 @@ router.post('/rank/:id', async (req,res) => {
         // const reqTeam = await teams.findOne({teamName: reqSub.teamName});
         console.log('this is ',req.body)
         const reqHack = await hacks.findById(req.params.id)
-        await teams.findByIdAndUpdate(reqHack.id, {
+        await teams.findOneAndUpdate({teamName: reqHack.teamName}, {
             $set: {
                 points: req.body.points
             }
