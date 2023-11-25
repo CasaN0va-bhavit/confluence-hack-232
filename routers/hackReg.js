@@ -42,6 +42,7 @@ router.get('/', async (req,res) => {
 router.post('/create-team', upload.single('teamPfp'), async (req,res) => {
     const {teamName,  participant1} = req.body
     const foundTeam = await teams.find({})
+    var fileName;
     var error = ""
     if(!req.file) {
         error = "Please upload a profile picture of your team";   
@@ -49,7 +50,11 @@ router.post('/create-team', upload.single('teamPfp'), async (req,res) => {
     if(teamName.length > 15) {
         error = "The limit for the team name is only 15 characters.";   
     }
-    const fileName = req.file.filename
+    if (error.length === 0) {
+        fileName = req.file.filename
+    } else {
+        fileName = null
+    }
     // console.log(req.body)
     async function someFunction (participant) {
         const foundUserName = await User.findOne({username: participant})
