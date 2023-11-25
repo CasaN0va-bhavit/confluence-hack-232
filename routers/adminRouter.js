@@ -20,7 +20,7 @@ router.get('/submissions/:id', async (req,res) => {
         const reqTeam = await teams.findOne({teamName: reqSub.teamName});
         console.log(reqSub);
         console.log(reqTeam);
-        res.render('submission', {submission: reqSub, reqTeam: reqTeam});
+        res.render('submission', {submission: reqSub, reqTeam: reqTeam, user: req.user});
     }
     else {
         res.redirect('/home');
