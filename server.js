@@ -13,7 +13,6 @@ const express = require('express'),
 const indexRouter = require('./routers/indexRouter'),
     regRouter = require('./routers/regRouter'),
     loginRouter = require('./routers/loginRouter'),
-    dashboardRouter = require('./routers/dashboardRouter'),
     adminRouter = require('./routers/adminRouter'),
     hackSubRouter = require('./routers/hackSubRouter'),
     itemsRouter = require('./routers/shopRouter'),
@@ -56,7 +55,6 @@ app.get('/adminTeam', (req, res) => {
 app.use('/', indexRouter)
 app.use('/login', forwardAuthenticated, loginRouter)
 app.use('/register', forwardAuthenticated, regRouter)
-app.use('/dashboard', ensureAuthenticated, dashboardRouter)
 app.use('/admin', ensureAuthenticated, adminRouter)
 app.use('/hack', ensureAuthenticated, hackSubRouter)
 app.use('/shop', ensureAuthenticated, itemsRouter)
