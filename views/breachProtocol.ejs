@@ -333,7 +333,7 @@
                 if (selectedSequences[0] == sequencesTxt[i][0] && selectedSequences[1] == sequencesTxt[i][1] && selectedSequences[2] == sequencesTxt[i][2]) {
                     return successfulBreach()
                 } else {
-                    if (i == 2) return failureBreach()
+                    if (i == 2) return failedBreach()
                     if (i < 2) continue;
                 }
             }
