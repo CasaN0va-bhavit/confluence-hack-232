@@ -213,6 +213,52 @@
                 100% {transform: rotate(360deg)}
             }
     </style>
+                <script>
+                    <% if (myPath != '/home') { %>
+                    var loadedPercent = 0;
+                    window.setInterval(function() {
+                        if (loadedPercent == 100) {
+                            return document.getElementById('loadingScreen').style.display = 'none'
+                        }
+                        if (loadedPercent == 20) {
+                            document.getElementById('loadingtxt1').style.visibility = 'visible'
+                        }
+                        if (loadedPercent == 40) {
+                            document.getElementById('loadingtxt2').style.visibility = 'visible'
+                        }
+                        if (loadedPercent == 60) {
+                            document.getElementById('loadingtxt3').style.visibility = 'visible'
+                        }
+                        if (loadedPercent == 80) {
+                            document.getElementById('loadingtxt4').style.visibility = 'visible'
+                        }
+                        loadedPercent += 1
+                        document.getElementById('loadingPercent').innerText = loadedPercent + '%'
+                    }, 40)
+                    <% } %>
+                    
+                    window.addEventListener('mousemove', function(event) {
+                        if (event.pageY < 30 || event.pageY > screen.height - 115) return;
+                        var kuchhBhi = (event.pageX / screen.width) * 100
+                        if (kuchhBhi < 14 || kuchhBhi > 88.5) return;
+                        // console.log(screen.height)
+                        const styles = {
+                            top: `${event.pageY}px`
+                        }
+                        const styles2 = {
+                            marginLeft: `${event.pageX}px`
+                        }
+                        const styleTiming = {
+                            duration: 1500
+                        }
+                        // console.log(screen.width, kuchhBhi)
+                        document.getElementById('rectangle').animate(styles, styleTiming)
+                        document.getElementById('rectangle').style.top = event.pageY + 'px';
+                        document.getElementById('rectangle2').animate(styles2, styleTiming)
+                        document.getElementById('rectangle2').style.marginLeft = event.pageX + 'px';
+                        document.getElementById('coords').innerHTML = `${event.pageX}, ${event.pageY}`
+                    })
+                </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
 </head>
@@ -317,50 +363,4 @@
     <!-- <marquee style="color: white; position: fixed; bottom: 0px; font-family: BlenderProBook; opacity: 0.7;">LATEST NEWS - Night city is being robbed by Bhavit Grover, this notorious criminal is known online as CasaN0va or whatever the fuck he wants to name himself. Apart from that, there is a guy called Shyamak who has lost all his hair and wants revenge. He has begun his hunt for Arasaka Executives to feed his lust for beautiful individuals. </marquee> -->
 </body>
 
-<script>
-    <% if (myPath != '/home') { %>
-    var loadedPercent = 0;
-    window.setInterval(function() {
-        if (loadedPercent == 100) {
-            return document.getElementById('loadingScreen').style.display = 'none'
-        }
-        if (loadedPercent == 20) {
-            document.getElementById('loadingtxt1').style.visibility = 'visible'
-        }
-        if (loadedPercent == 40) {
-            document.getElementById('loadingtxt2').style.visibility = 'visible'
-        }
-        if (loadedPercent == 60) {
-            document.getElementById('loadingtxt3').style.visibility = 'visible'
-        }
-        if (loadedPercent == 80) {
-            document.getElementById('loadingtxt4').style.visibility = 'visible'
-        }
-        loadedPercent += 1
-        document.getElementById('loadingPercent').innerText = loadedPercent + '%'
-    }, 40)
-    <% } %>
-    
-    window.addEventListener('mousemove', function(event) {
-        if (event.pageY < 30 || event.pageY > screen.height - 115) return;
-        var kuchhBhi = (event.pageX / screen.width) * 100
-        if (kuchhBhi < 14 || kuchhBhi > 88.5) return;
-        // console.log(screen.height)
-        const styles = {
-            top: `${event.pageY}px`
-        }
-        const styles2 = {
-            marginLeft: `${event.pageX}px`
-        }
-        const styleTiming = {
-            duration: 1500
-        }
-        // console.log(screen.width, kuchhBhi)
-        document.getElementById('rectangle').animate(styles, styleTiming)
-        document.getElementById('rectangle').style.top = event.pageY + 'px';
-        document.getElementById('rectangle2').animate(styles2, styleTiming)
-        document.getElementById('rectangle2').style.marginLeft = event.pageX + 'px';
-        document.getElementById('coords').innerHTML = `${event.pageX}, ${event.pageY}`
-    })
-</script>
 </html>
