@@ -65,25 +65,22 @@
             
         <ul class="nav-menu" id="navmenu">
             <% if(!user) { %>
-                <a class="nav-item" id="special" href='/register' data-value="REGISTER">REG</a>
+                <a class="nav-item" id="special3" href='/register' data-value="REGISTER">REG</a>
                 <li class="nav-item" style="height: 100%;"><div class="line"></div></li>
-                <a class="nav-item" id="special2" data-value="LOGIN" href="/login">LOGIN</a>
+                <a class="nav-item" id="special4" data-value="LOGIN" href="/login">LOGIN</a>
                 <li class="nav-item" style="height: 100%;"><div class="line"></div></li>
             <% } else {  %>
-                <a class="nav-item" id="special" href='/register' style="display: none; margin: 0px;" data-value="REGISTER">REG</a>
-                <li class="nav-item" style="display: none; margin: 0px;"><div style="display: none; margin: 0px;" class="line"></div></li>
-                <a class="nav-item" id="special2" data-value="LOGIN" style="display: none; margin: 0px;" href="/login">LOGIN</a>
-                <li class="nav-item" style="display: none; margin: 0px;"><div style="display: none; margin: 0px;" class="line"></div></li>
-                <% } %>
-                <a class="nav-item" id="special3" data-value="FAQS" href="/faqs">FAQS</a>
+                
+                <a class="nav-item" id="special3" data-value="HACK REG" href="/hackReg">HACK REG</a>
                 <li class="nav-item" style="height: 100%;"><div class="line"></div></li>
-                <a class="nav-item" id="special4" data-value="HACK REG" href="/hackReg">HACK REG</a>
+                <a class="nav-item" id="special4" data-value="SHOP" href="/shop">SHOP</a>
                 <li class="nav-item" style="height: 100%;"><div class="line"></div></li>
-                <a class="nav-item" id="special5" data-value="LEADERBRD" href="/lb">LEADERBRD</a>
+                <li class="nav-item" id="special5" data-value="GAMES" style="cursor: pointer;" onclick="games()" >GAMES</li>
                 <li class="nav-item" style="height: 100%;"><div class="line"></div></li>
-                <a class="nav-item" id="special6" data-value="SHOP" href="/shop">SHOP</a>
+            <% } %>
+                <a class="nav-item" id="special" data-value="FAQS" href="/faqs">FAQS</a>
                 <li class="nav-item" style="height: 100%;"><div class="line"></div></li>
-                <li class="nav-item" id="special7" data-value="GAMES" style="cursor: pointer;" onclick="games()" >GAMES</li>
+                <a class="nav-item" id="special2" data-value="LEADERBRD" href="/lb">LEADERBRD</a>
                 <li class="nav-item" style="height: 100%;"><div class="line"></div></li>
                 <li class="nav-item">
                     <svg class="menu-uncollapse" style="margin-top: 0.35vw; opacity: 1 !important;" width="58" height="20" viewBox="0 0 58 20" class="uncollapsed" id="hideMenu" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -430,6 +427,7 @@
         document.getElementById('loadingPercent').innerText = loadedPercent + '%'
     }, 40)
     <% } %>
+    try {
     const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     let interval = null;
@@ -602,6 +600,7 @@
         iteration += 1 / 3;
     }, 15);
     }
+} catch (e) {}
     window.addEventListener('mousemove', function(event) {
         const navMenuRect = document.getElementById('navmenu').getBoundingClientRect();
         if (navMenuRect.left >= event.pageX || navMenuRect.right <= event.pageX || navMenuRect.top >= event.pageY|| navMenuRect.bottom <= event.pageY) {

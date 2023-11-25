@@ -8,19 +8,19 @@ const ejs = require('ejs')
 
 
 router.get('/', (req, res) => {
-    res.render('register', {error: ""})
+    res.render('register', {error: "", user: false})
 })
 
 router.post('/', async (req, res) => {
     const {username, fname, lname, password, cnfpassword} = req.body
     const foundUser = await User.findOne({username})
     if (!username || !password || !fname || !lname || !cnfpassword) {
-        return res.render('register', {error: 'Please enter all the credentials'})
+        return res.render('register', {error: 'Please enter all the credentials', user: false})
     }
     if (password !== cnfpassword) {
-        return res.render('register', {error: 'The passwords do not match!'})
+        return res.render('register', {error: 'The passwords do not match!', user: false})
     }
-    if (foundUser) return res.render('register', {error: "A user already exists with this username."})
+    if (foundUser) return res.render('register', {error: "A user already exists with this username.", user: false})
     // var mailOptions = {
     //     from: "confluence23.aisg46@outlook.com",
     //     to: username,

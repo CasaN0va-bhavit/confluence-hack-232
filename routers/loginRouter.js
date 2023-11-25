@@ -2,7 +2,8 @@ const router = require('express').Router()
 const passport = require('passport')
 
 router.get('/', (req, res) => {
-    res.render('login')
+    console.log(req.user == undefined)
+    res.render('login', {user: false})
 })
 
 router.post('/', passport.authenticate('local', {

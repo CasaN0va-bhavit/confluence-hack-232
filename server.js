@@ -71,7 +71,7 @@ app.get('/logout', (req, res) => {
 });
 
 app.use((req, res, next) => {
-    res.status(404).render('notfound')
+    res.status(404).render('notfound', {user: req.user})
 })
 
 app.listen(PORT, console.log(`SERVER CONNECTED ON PORT ${PORT}`))

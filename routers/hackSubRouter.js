@@ -60,7 +60,7 @@ router.get('/', async (req,res) => {
         reqID = "asdasdada"
     }
 
-    res.render('hackSubmission', {error: error, reqTeam: reqTeam, canSub: canSub, reqId: reqID});
+    res.render('hackSubmission', {error: error, reqTeam: reqTeam, canSub: canSub, reqId: reqID, user: req.user});
 })
 
 const cpUpload = upload.fields([{ name: 'env', maxCount: 1 }, { name: 'thumbnail', maxCount: 1 }])
@@ -77,7 +77,7 @@ router.post('/post', cpUpload ,async (req,res) => {
     if (!req.body.submissionLink || !req.body.gdLink  || !req.files || !req.body.projectName || !req.body.desc) {
         error = "Please enter all the details."
         console.log(req.body.submissionLink, req.body.gdLink, req.body.projectName, req.body.desc)
-        res.render('hackSubmission', {error: error, reqTeam: reqTeam, canSub: true, reqId: "dadadaasda"});
+        res.render('hackSubmission', {error: error, reqTeam: reqTeam, canSub: true, reqId: "dadadaasda", user: req.user});
     } else {
         const {submissionLink, gdLink, projectName, desc} = req.body;
         const newHackSub = new hacks({

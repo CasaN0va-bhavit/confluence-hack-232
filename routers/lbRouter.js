@@ -27,7 +27,7 @@ router.get('/', async (req,res) => {
     pushTop7(5)
     pushTop7(6)
     console.log(top7Teams)
-    res.render('leaderboard', {top7Teams: top7Teams})
+    res.render('leaderboard', {top7Teams: top7Teams, user: req.user})
 });
 
 module.exports = router;

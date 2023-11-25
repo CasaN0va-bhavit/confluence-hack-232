@@ -2,7 +2,7 @@ const router = require('express').Router()
 const User = require('../schemas/userSchema')
 
 router.get('/', async (req, res) => {
-    res.render('snake')
+    res.render('snake', {user: req.user})
 })
 
 router.post('/', async (req, res) => {
