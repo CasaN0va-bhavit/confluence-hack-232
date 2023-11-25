@@ -33,20 +33,22 @@ router.get('/', async (req,res) => {
     var canSub = true;
     for (let i = 0; i < allTeams.length; i++) {
         if (req.user.username === allTeams[i].participant1 || req.user.username === allTeams[i].participant2 || req.user.username === allTeams[i].participant3 || req.user.username === allTeams[i].participant4 || req.user.username === allTeams[i].teamAdmin) {
+            reqTeam = allTeams[i]
             if (req.user.username === allTeams[i].teamAdmin) {
                 console.log("Im a team admin")
                 flag = true;
-                reqTeam = allTeams[i]
             } else {
                 console.log("Im not a team admin")
                 error = "Please ask your team admin " + allTeams[i].teamAdmin + " to make a submission."
                 flag = true;
+                canView = true
             }
         }
     }
     if (!flag) {
         error = "Please add yourself/make a team to make a hack submission."
     }
+    var reqHack;
     var reqID;
     if (reqTeam) {
         const allHacks = await hacks.find({})
@@ -55,14 +57,21 @@ router.get('/', async (req,res) => {
             if (allHacks[i].teamName === reqTeam.teamName) {
                 canSub = false;
                 reqID = allHacks[i].id
+                reqHack = await hacks.findById(reqID) || false
             }
         }
     } else {
         reqID = "asdasdada"
+        reqHack = "asdasdasdasd"
+        canView = false
     }
-    const reqHack = await hacks.findById(reqID) || false
 
-    res.render('hackSubmission', {error: error, reqTeam: reqTeam, canSub: canSub, reqId: reqID, user: req.user, reqHack: reqHack});
+    // for (let i = 0; i < )
+    // if (req.user.username !== reqTeam.teamAdmin) {
+    //     canView = true
+    // }
+
+    res.render('hackSubmission', {error: error, reqTeam: reqTeam, canSub: canSub, reqId: reqID, user: req.user, reqHack: reqHack, canView: canView});
 })
 
 const cpUpload = upload.fields([{ name: 'env', maxCount: 1 }, { name: 'thumbnail', maxCount: 1 }])
