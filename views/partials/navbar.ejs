@@ -28,6 +28,8 @@
         </svg>
         
     <ul class="nav-menu" id="navmenu">
+        <a class="nav-item" id="special0" data-value="HOME" href="/home">HOME</a>
+        <li class="nav-item" style="height: 100%;"><div class="line"></div></li>
         <a class="nav-item" id="special" data-value="FAQS" href="/faqs">FAQS</a>
         <li class="nav-item" style="height: 100%;"><div class="line"></div></li>
         <a class="nav-item" id="special2" data-value="HACK REG" href="/hackReg">HACK REG</a>
@@ -186,6 +188,30 @@
 
         let interval = null;
 
+        document.getElementById("special0").onmouseover = event => {  
+        let iteration = 0;
+
+        clearInterval(interval);
+
+        interval = setInterval(() => {
+            event.target.innerText = event.target.innerText
+            .split("")
+            .map((letter, index) => {
+                if(index < iteration) {
+                return event.target.dataset.value[index];
+                }
+            
+                return letters[Math.floor(Math.random() * 26)]
+            })
+            .join("");
+            
+            if(iteration >= event.target.dataset.value.length){ 
+            clearInterval(interval);
+            }
+            
+            iteration += 1 / 3;
+        }, 15);
+        }
         document.getElementById("special").onmouseover = event => {  
         let iteration = 0;
 

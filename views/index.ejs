@@ -6,31 +6,33 @@
     <title>Home</title>
 </head>
 <body>
-    <div class="loadingScreen" id="loadingScreen">
-        <div class="loadingContainer">
-            <div class="loadingTitle">
-                <div class="loadingHeading">
-                    <p>LOADING</p>
-                    <p class="therefore">∴</p>
+    <% if (myPath != '/home') { %>
+        <div class="loadingScreen" id="loadingScreen">
+            <div class="loadingContainer">
+                <div class="loadingTitle">
+                    <div class="loadingHeading">
+                        <p>LOADING</p>
+                        <p class="therefore">∴</p>
+                    </div>
+                    <p id="loadingPercent">0%</p>
                 </div>
-                <p id="loadingPercent">0%</p>
-            </div>
-            <div class="loadingBarContainer">
-                <div class="loadingBar"></div>
-            </div>
-            <div style="display: flex; justify-content: space-between;">
-                <div class="caution">
-                    <p style="font-size: 22px; margin-top: 5px;">&#9888;&nbsp;CAUTION! DO NOT TURN OFF!</p>
+                <div class="loadingBarContainer">
+                    <div class="loadingBar"></div>
                 </div>
-                <div class="loadingTexts">
-                    <p id="loadingtxt1">Establishing Secure Connection...</p>
-                    <p id="loadingtxt2">Loading User Interface...</p>
-                    <p id="loadingtxt3">Initializing Database Connection...</p>
-                    <p id="loadingtxt4">Encrypting Arasaka Files...</p>
+                <div style="display: flex; justify-content: space-between;">
+                    <div class="caution">
+                        <p style="font-size: 22px; margin-top: 5px;">&#9888;&nbsp;CAUTION! DO NOT TURN OFF!</p>
+                    </div>
+                    <div class="loadingTexts">
+                        <p id="loadingtxt1">Establishing Secure Connection...</p>
+                        <p id="loadingtxt2">Loading User Interface...</p>
+                        <p id="loadingtxt3">Initializing Database Connection...</p>
+                        <p id="loadingtxt4">Encrypting Arasaka Files...</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    <% } %>
     <img src="/MacBookAir1.png" class="bg-img" alt="">
     <header class="nav">
         <div class="logo">
@@ -406,6 +408,7 @@
         }
 </style>
 <script>
+    <% if (myPath != '/home') { %>
     var loadedPercent = 0;
     window.setInterval(function() {
         if (loadedPercent == 100) {
@@ -426,6 +429,7 @@
         loadedPercent += 1
         document.getElementById('loadingPercent').innerText = loadedPercent + '%'
     }, 40)
+    <% } %>
     const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     let interval = null;
