@@ -2,18 +2,21 @@ require('dotenv').config()
 const nodemailer = require('nodemailer');
 const ejs = require('ejs')
 
+console.log(process.env.FROM_EMAIL, process.env.EMAIL_PASS)
+
+
 var transporter = nodemailer.createTransport({
   service: 'outlook',
   auth: {
-    user: "confluence23.aisg46@outlook.com",
-    pass: "bhavitisgay1234"
+    user: process.env.FROM_EMAIL,
+    pass: process.env.EMAIL_PASS
   }
 });
 
 async function sendMail(to, subject, text, html) {
   console.log("sendMail Function Initialized")
   var mailOptions = {
-    from: "confluence23.aisg46@outlook.com",
+    from: process.env.FROM_EMAIL,
     to: to,
     subject: subject,
     text: text,

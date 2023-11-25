@@ -1,7 +1,218 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+    <head>
     <meta charset="UTF-8">
+    <style>
+        .menu-uncollapse {
+            width: 3vw;
+            /* border: 1px solid red;
+            padding: 8px; */
+        }
+        .uncollapsed {
+        }
+        .rectangle {
+            height: 20px;
+            width: 10px;
+            position: absolute;
+            top: 70vh;
+            left: 1.57vw;
+            background: red;
+        }
+        .coords {
+            font-family: BlenderProBook;
+            color: #f00;
+            margin-top: 2.6vw;
+            margin-left: 87.5vw;
+            font-size: 0.8em;
+        }
+        .rectangle2 {
+            width: 20px;
+            height: 10px;
+            background: red;
+            margin-top: 2.9vh;
+            margin-left: 26vw;
+        }
+        @font-face 
+        {
+            font-family:BlenderProBook;
+            font-style:normal;
+            font-weight:400;
+            src:url('./BlenderProBook.woff2') format("woff2");
+        }
+        @font-face 
+        {
+            font-family:sentex;
+            font-style:normal;
+            font-weight:400;
+            src:url('./Sentex-Regular.ttf');
+        }
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            width: 100vw;
+            height: auto;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        .bg-img {
+            aspect-ratio: initial;
+            width: 100vw;
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            top: 0;
+            z-index: -2;
+        }
+        .heading  {
+            margin-left: 5vw;
+            color: transparent;
+            margin-top: 32vw;
+            width: 30%;
+            font-family: sentex;
+            font-size: 5vw;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            -webkit-text-stroke: 1px white;
+            animation: glitch 1s linear infinite;
+        }
+        @keyframes glitch{
+            2%,64%{
+                transform: translate(2px,0) skew(0deg);
+            }
+            4%,60%{
+                transform: translate(-2px,0) skew(0deg);
+            }
+            62%{
+                transform: translate(0,0) skew(5deg); 
+            }
+            }
+    
+            .heading:before,
+            .heading:after{
+                content: attr(title);
+                position: absolute;
+                left: 0;
+            }
+    
+            .heading:before{
+                animation: glitchTop 1s linear infinite;
+                clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+                -webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+            }
+    
+            @keyframes glitchTop{
+                2%,64%{
+                    transform: translate(2px,-2px);
+                }
+                4%,60%{
+                    transform: translate(-2px,2px);
+                }
+                62%{
+                    transform: translate(13px,-1px) skew(-13deg); 
+                }
+            }
+    
+            .heading:after{
+                animation: glitchBotom 1.5s linear infinite;
+                clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+                -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+            }
+    
+            @keyframes glitchBotom{
+                2%,64%{
+                    transform: translate(-2px,0);
+                }
+                4%,60%{
+                    transform: translate(-2px,0);
+                }
+                62%{
+                    transform: translate(-22px,5px) skew(21deg); 
+                }
+            }
+            .loadingScreen {
+                position: fixed;
+                background-color: #000;
+                width: 100%;
+                height: 100vh;
+                top: 0;
+                left: 0;
+                z-index: 99999;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .loadingContainer {
+                display: flex;
+                flex-direction: column;
+                width: 60vw;
+                color: white;
+                font-family: BlenderProBook;
+                font-size: 2em;
+            }
+            .loadingTitle {
+                display: flex;
+                justify-content: space-between;
+            }
+            .loadingBarContainer {
+                border: 1px solid white;
+                width: 100%;
+                height: 2vw;
+                margin-top: 10px;
+                display: flex;
+                align-items: center;
+                padding-left: 0.5vw;
+            }
+            .loadingTexts {
+                align-self: flex-end;
+                margin-top: 10px;
+            }
+            .loadingTexts p {
+                font-size: 20px;
+                line-height: 0.9;
+                visibility: hidden;
+                text-align: right;
+            }
+            .loadingBar {
+                background-color: white;
+                width: 59vw;
+                height: 1vw;
+                width: 0;
+                animation-name: loadMf;
+                animation-duration: 4s;
+                animation-timing-function: linear;
+            }
+            @keyframes loadMf {
+                0% {width: 0;}
+                100% {width: 59vw;}
+            }
+            .loadingHeading {
+                display: flex;
+                align-items: center;
+            }
+            .therefore {
+                margin-left: 5px;
+                animation-name: spinMF;
+                animation-iteration-count: infinite;
+                animation-duration: 1s;
+                animation-timing-function: linear;
+                font-family: BlenderProBook;
+                font-size: 1em;
+            }
+            @keyframes spinMF {
+                0% {transform: rotate(0deg)}
+                50% {transform: rotate(180deg)}
+                100% {transform: rotate(360deg)}
+            }
+    </style>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
 </head>
@@ -106,217 +317,6 @@
     <!-- <marquee style="color: white; position: fixed; bottom: 0px; font-family: BlenderProBook; opacity: 0.7;">LATEST NEWS - Night city is being robbed by Bhavit Grover, this notorious criminal is known online as CasaN0va or whatever the fuck he wants to name himself. Apart from that, there is a guy called Shyamak who has lost all his hair and wants revenge. He has begun his hunt for Arasaka Executives to feed his lust for beautiful individuals. </marquee> -->
 </body>
 
-<style>
-    .menu-uncollapse {
-        width: 3vw;
-        /* border: 1px solid red;
-        padding: 8px; */
-    }
-    .uncollapsed {
-    }
-    .rectangle {
-        height: 20px;
-        width: 10px;
-        position: absolute;
-        top: 70vh;
-        left: 1.57vw;
-        background: red;
-    }
-    .coords {
-        font-family: BlenderProBook;
-        color: #f00;
-        margin-top: 2.6vw;
-        margin-left: 87.5vw;
-        font-size: 0.8em;
-    }
-    .rectangle2 {
-        width: 20px;
-        height: 10px;
-        background: red;
-        margin-top: 2.9vh;
-        margin-left: 26vw;
-    }
-    @font-face 
-    {
-        font-family:BlenderProBook;
-        font-style:normal;
-        font-weight:400;
-        src:url('./BlenderProBook.woff2') format("woff2");
-    }
-    @font-face 
-    {
-        font-family:sentex;
-        font-style:normal;
-        font-weight:400;
-        src:url('./Sentex-Regular.ttf');
-    }
-    * {
-        margin: 0;
-        padding: 0;
-    }
-    body {
-        width: 100vw;
-        height: auto;
-        margin: 0;
-        padding: 0;
-        overflow-x: hidden;
-        display: flex;
-        flex-direction: column;
-    }
-    ::-webkit-scrollbar {
-        display: none;
-    }
-    .bg-img {
-        aspect-ratio: initial;
-        width: 100vw;
-        margin: 0;
-        padding: 0;
-        position: absolute;
-        top: 0;
-        z-index: -2;
-    }
-    .heading  {
-        margin-left: 5vw;
-        color: transparent;
-        margin-top: 32vw;
-        width: 30%;
-        font-family: sentex;
-        font-size: 5vw;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-        -webkit-text-stroke: 1px white;
-        animation: glitch 1s linear infinite;
-    }
-    @keyframes glitch{
-        2%,64%{
-            transform: translate(2px,0) skew(0deg);
-        }
-        4%,60%{
-            transform: translate(-2px,0) skew(0deg);
-        }
-        62%{
-            transform: translate(0,0) skew(5deg); 
-        }
-        }
-
-        .heading:before,
-        .heading:after{
-            content: attr(title);
-            position: absolute;
-            left: 0;
-        }
-
-        .heading:before{
-            animation: glitchTop 1s linear infinite;
-            clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
-            -webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
-        }
-
-        @keyframes glitchTop{
-            2%,64%{
-                transform: translate(2px,-2px);
-            }
-            4%,60%{
-                transform: translate(-2px,2px);
-            }
-            62%{
-                transform: translate(13px,-1px) skew(-13deg); 
-            }
-        }
-
-        .heading:after{
-            animation: glitchBotom 1.5s linear infinite;
-            clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
-            -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
-        }
-
-        @keyframes glitchBotom{
-            2%,64%{
-                transform: translate(-2px,0);
-            }
-            4%,60%{
-                transform: translate(-2px,0);
-            }
-            62%{
-                transform: translate(-22px,5px) skew(21deg); 
-            }
-        }
-        .loadingScreen {
-            position: fixed;
-            background-color: #000;
-            width: 100%;
-            height: 100vh;
-            top: 0;
-            left: 0;
-            z-index: 99999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .loadingContainer {
-            display: flex;
-            flex-direction: column;
-            width: 60vw;
-            color: white;
-            font-family: BlenderProBook;
-            font-size: 2em;
-        }
-        .loadingTitle {
-            display: flex;
-            justify-content: space-between;
-        }
-        .loadingBarContainer {
-            border: 1px solid white;
-            width: 100%;
-            height: 2vw;
-            margin-top: 10px;
-            display: flex;
-            align-items: center;
-            padding-left: 0.5vw;
-        }
-        .loadingTexts {
-            align-self: flex-end;
-            margin-top: 10px;
-        }
-        .loadingTexts p {
-            font-size: 20px;
-            line-height: 0.9;
-            visibility: hidden;
-            text-align: right;
-        }
-        .loadingBar {
-            background-color: white;
-            width: 59vw;
-            height: 1vw;
-            width: 0;
-            animation-name: loadMf;
-            animation-duration: 4s;
-            animation-timing-function: linear;
-        }
-        @keyframes loadMf {
-            0% {width: 0;}
-            100% {width: 59vw;}
-        }
-        .loadingHeading {
-            display: flex;
-            align-items: center;
-        }
-        .therefore {
-            margin-left: 5px;
-            animation-name: spinMF;
-            animation-iteration-count: infinite;
-            animation-duration: 1s;
-            animation-timing-function: linear;
-            font-family: BlenderProBook;
-            font-size: 1em;
-        }
-        @keyframes spinMF {
-            0% {transform: rotate(0deg)}
-            50% {transform: rotate(180deg)}
-            100% {transform: rotate(360deg)}
-        }
-</style>
 <script>
     <% if (myPath != '/home') { %>
     var loadedPercent = 0;
