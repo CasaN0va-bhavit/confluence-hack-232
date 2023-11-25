@@ -772,7 +772,7 @@
                 if (gameOver) {
                     const xhttp = new XMLHttpRequest()
                     clearInterval(gameInterval)
-                    alert("GAME OVER! You scored " + points + " points! So, you earned " + (points*5) + " coins!")
+                    alert("GAME OVER! You scored " + points + " points! So, you earned " + (points*2) + " coins!")
                     xhttp.open("POST", "/snake");
                     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                     xhttp.send("score=" + points);
