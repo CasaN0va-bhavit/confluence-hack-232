@@ -232,11 +232,11 @@
                                 <path d="M29.9634 30L28.9932 27.003H22.9993L22.0075 30H20.6922L25.026 17.0635H26.9665L31.3002 30H29.9634ZM23.3873 25.7956H28.6051L26.1256 18.2924H25.8453L23.3873 25.7956ZM43.6354 27.1324C43.6354 27.5492 43.5491 27.8942 43.3766 28.1673C43.2473 28.3542 43.0173 28.6201 42.6867 28.9651C42.3561 29.3101 42.0974 29.54 41.9105 29.655C41.5511 29.885 41.1846 30 40.8109 30H35.1188V17.0635H40.8109C41.2134 17.0635 41.5799 17.1713 41.9105 17.3869C42.0974 17.5019 42.3561 17.739 42.6867 18.0984C43.0173 18.4434 43.2473 18.7165 43.3766 18.9177C43.5491 19.1908 43.6354 19.5358 43.6354 19.9526V27.1324ZM42.3848 19.9958C42.3848 19.8664 42.3633 19.7586 42.3202 19.6723C42.1908 19.428 41.9824 19.1693 41.6949 18.8961C41.4074 18.6087 41.1702 18.4218 40.9834 18.3356C40.9115 18.2924 40.8181 18.2709 40.7031 18.2709H36.3693V28.7926H40.7031C40.8181 28.7926 40.9115 28.771 40.9834 28.7279C41.1702 28.6417 41.4074 28.4548 41.6949 28.1673C41.9824 27.8798 42.1908 27.6139 42.3202 27.3696C42.3633 27.2833 42.3848 27.1899 42.3848 27.0893V19.9958ZM57.0882 27.1324C57.0882 27.5492 57.0019 27.8942 56.8294 28.1673C56.7001 28.3542 56.4701 28.6201 56.1395 28.9651C55.8089 29.3101 55.5502 29.54 55.3633 29.655C55.004 29.885 54.6374 30 54.2637 30H48.5716V17.0635H54.2637C54.6662 17.0635 55.0327 17.1713 55.3633 17.3869C55.5502 17.5019 55.8089 17.739 56.1395 18.0984C56.4701 18.4434 56.7001 18.7165 56.8294 18.9177C57.0019 19.1908 57.0882 19.5358 57.0882 19.9526V27.1324ZM55.8376 19.9958C55.8376 19.8664 55.8161 19.7586 55.773 19.6723C55.6436 19.428 55.4352 19.1693 55.1477 18.8961C54.8602 18.6087 54.623 18.4218 54.4362 18.3356C54.3643 18.2924 54.2709 18.2709 54.1559 18.2709H49.8222V28.7926H54.1559C54.2709 28.7926 54.3643 28.771 54.4362 28.7279C54.623 28.6417 54.8602 28.4548 55.1477 28.1673C55.4352 27.8798 55.6436 27.6139 55.773 27.3696C55.8161 27.2833 55.8376 27.1899 55.8376 27.0893V19.9958Z" fill="white"/>
                             </svg>
                             <form action="/hackReg/editTeam/<%= reqTeam.id %>" method="POST">
-                                <input type="hidden" name="participant1" id="participant1hidden">
-                                <input type="hidden" name="participant2" id="participant2hidden">
-                                <input type="hidden" name="participant3" id="participant3hidden">
-                                <input type="hidden" name="participant4" id="participant4hidden">
-                                <input type="hidden" name="teamName" id="teamNameHidden">
+                                <input type="hidden" value="<%= reqTeam.participant1 %>" name="participant1" id="participant1hidden">
+                                <input type="hidden" value="<%= reqTeam.participant2 %>" name="participant2" id="participant2hidden">
+                                <input type="hidden" value="<%= reqTeam.participant3 %>" name="participant3" id="participant3hidden">
+                                <input type="hidden" value="<%= reqTeam.participant4 %>" name="participant4" id="participant4hidden">
+                                <input type="hidden" value="<%= reqTeam.teamName %>" name="teamName" id="teamNameHidden">
                                 <button type="submit" onclick="submitMainForm(event)">
                                     <svg class="sub-button" width="205" height="47" viewBox="0 0 205 47" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M204 1H55.8397L100.774 46H204V1Z" stroke="white" stroke-width="0.805611"/>
@@ -399,7 +399,7 @@
         font-family:BlenderProBook;
         font-style:normal;
         font-weight:400;
-        src:url('../BlenderProBook.woff2') format("woff2");
+        src:url('/BlenderProBook.woff2') format("woff2");
     }
     @font-face 
     {
@@ -413,7 +413,7 @@
         font-family:sentex;
         font-style:normal;
         font-weight:400;
-        src:url('./Sentex-Regular.ttf');
+        src:url('/Sentex-Regular.ttf');
     }
     .bottom-vector {
         position: relative;

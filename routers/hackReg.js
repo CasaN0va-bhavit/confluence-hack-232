@@ -22,11 +22,11 @@ router.get('/', async (req,res) => {
     var canReg = true;
     const allTeams = await teams.find({});
     var reqTeam;
-    console.log(req.user.username)
+    // console.log(req.user.username)
     for (let i = 0; i < allTeams.length; i++) {
         if (req.user.username === allTeams[i].participant1 || req.user.username === allTeams[i].participant2 || req.user.username === allTeams[i].participant3 || req.user.username === allTeams[i].participant4 || req.user.username === allTeams[i].teamAdmin) {
             canReg = false
-            console.log('cannot register')
+            // console.log('cannot register')
             reqTeam = allTeams[i]
         }
     }
@@ -313,14 +313,99 @@ router.post('/create-team', upload.single('teamPfp'), async (req,res) => {
 });
 
 router.post('/editTeam/:id', async (req,res) => {
+    console.log(req.body)
+    const reqTeam = await teams.findById(req.params.id);
     const renderError = (err) => {
-        return res.render('hackReg', {canReg: false, user: req.user, error: err, reqTeam: false, canEdit: true})
+        return res.render('hackReg', {canReg: false, user: req.user, error: err, reqTeam: reqTeam, canEdit: true})
     };
-    if (!req.body.participant1 && !req.body.participant2 && !req.body.participant3 && !req.body.participant4) {
-        renderError("At least one participant is required.")
+    if (!req.body.participant1) {
+        return renderError("Participant 1 is required.")
     }
-    const {teamName,  participant1} = req.body
-    res.redirect('/hackReg');
+    if (!req.body.teamName) {
+        return renderError("Team name is required.")
+    }
+    if (req.body.teamName.length > 15) {
+        return renderError("The team name cannot be more than 15 characters.")
+    }
+    if (req.body.participant1) {
+        const tempUser = await User.findOne({username: req.body.participant1})
+        const allTeams = await teams.find({});
+        for (let i = 0; i < allTeams.length; i++) {
+            // console.log('here')
+            if (allTeams[i].teamName !== reqTeam.teamName) {
+                // console.log(allTeams[i].teamName, reqTeam.teamName)
+                if (req.body.participant1 === allTeams[i].teamAdmin || req.body.participant1 === allTeams[i].participant1 || req.body.participant1 === allTeams[i].participant2 || req.body.participant1 === allTeams[i].participant3 || req.body.participant1 === allTeams[i].participant4) {                
+                    // console.log(allTeams[i])
+                    return renderError("One or more of your participants are already in a team.")
+                }
+            }
+        }
+        if (!tempUser) {
+            return renderError("One or more of your participants aren't registered on our website.")
+        }
+    }
+    if (req.body.participant2) {
+        const tempUser2 = await User.findOne({username: req.body.participant2})
+        const allTeams = await teams.find({});
+        for (let i = 0; i < allTeams.length; i++) {
+            // console.log('here')
+            if (allTeams[i].teamName !== reqTeam.teamName) {
+                // console.log(allTeams[i].teamName, reqTeam.teamName)
+                if (req.body.participant2 === allTeams[i].teamAdmin || req.body.participant2 === allTeams[i].participant2 || req.body.participant2 === allTeams[i].participant3 || req.body.participant2 === allTeams[i].participant4 || req.body.participant2 === allTeams[i].participant1) {                
+                    // console.log(allTeams[i])
+                    return renderError("One or more of your participants are already in a team.")
+                }
+            }
+        }
+        console.log(tempUser2)
+        if (tempUser2 === null) {
+            return renderError("One or more of your participants aren't registered on our website.")
+        }
+    }
+    if (req.body.participant3) {
+        const tempUser3 = await User.findOne({username: req.body.participant3})
+        const allTeams = await teams.find({});
+        for (let i = 0; i < allTeams.length; i++) {
+            // console.log('here')
+            if (allTeams[i].teamName !== reqTeam.teamName) {
+                // console.log(allTeams[i].teamName, reqTeam.teamName)
+                if (req.body.participant3 === allTeams[i].teamAdmin || req.body.participant3 === allTeams[i].participant1 || req.body.participant3 === allTeams[i].participant2 || req.body.participant3 === allTeams[i].participant3 || req.body.participant3 === allTeams[i].participant4) {                
+                    // console.log(allTeams[i])
+                    return renderError("One or more of your participants are already in a team.")
+                }
+            }
+        }
+        if (!tempUser3) {
+            return renderError("One or more of your participants aren't registered on our website.")
+        }
+    }
+    if (req.body.participant4) {
+        const allTeams = await teams.find({});
+        for (let i = 0; i < allTeams.length; i++) {
+            // console.log('here')
+            if (allTeams[i].teamName !== reqTeam.teamName) {
+                // console.log(allTeams[i].teamName, reqTeam.teamName)
+                if (req.body.participant4 === allTeams[i].teamAdmin || req.body.participant4 === allTeams[i].participant4 || req.body.participant4 === allTeams[i].participant2 || req.body.participant4 === allTeams[i].participant3 || req.body.participant4 === allTeams[i].participant4) {                
+                    // console.log(allTeams[i])
+                    return renderError("One or more of your participants are already in a team.")
+                }
+            }
+        }
+        const tempUser4 = await User.findOne({username: req.body.participant4})
+        if (!tempUser4) {
+            return renderError("One or more of your participants aren't registered on our website.")
+        }
+    }
+    await teams.findByIdAndUpdate(req.params.id, {
+        $set: {
+            participant1: req.body.participant1,
+            participant2: req.body.participant2,
+            participant3: req.body.participant3,
+            participant4: req.body.participant4,
+            teamName: req.body.teamName
+        }
+    })
+    return res.redirect('/hackReg');
 });
 
 router.post('/leave/:id', async (req,res) => {
