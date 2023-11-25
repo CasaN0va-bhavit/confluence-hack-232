@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { error } = require('console');
 const teams = require('../schemas/teamSchema');
 const User = require('../schemas/userSchema');
 const {sendMail} = require('../utils/mailHelper')
@@ -312,47 +313,13 @@ router.post('/create-team', upload.single('teamPfp'), async (req,res) => {
 });
 
 router.post('/editTeam/:id', async (req,res) => {
+    const renderError = (err) => {
+        return res.render('hackReg', {canReg: false, user: req.user, error: err, reqTeam: false, canEdit: true})
+    };
+    if (!req.body.participant1 && !req.body.participant2 && !req.body.participant3 && !req.body.participant4) {
+        renderError("At least one participant is required.")
+    }
     const {teamName,  participant1} = req.body
-    // if (!req.file) {
-    //     error = "Please upload a team pfp."
-    // }
-    if (req.body.participant2 !== undefined || req.body.participant2 !== "") {
-        await teams.findByIdAndUpdate(req.params.id, {
-            $set: {
-                teamName: teamName,
-                participant1: participant1,
-                participant2: req.body.participant2 
-            }
-        });
-    }
-    else if (req.body.participant3 !== undefined || req.body.participant3 !== "") {
-        await teams.findByIdAndUpdate(req.params.id, {
-            $set: {
-                teamName: teamName,
-                participant1: participant1,
-                participant2: req.body.participant2,
-                participant3: req.body.participant3  
-            }
-        });
-    }
-    else if (req.body.participant4 !== undefined || req.body.participant4 !== "") {
-        await teams.findByIdAndUpdate(req.params.id, {
-            $set: {
-                teamName: teamName,
-                participant1: participant1,
-                participant2: req.body.participant2,
-                participant3: req.body.participant3,
-                participant4: req.body.participant4
-            }
-        });
-    } else {
-        await teams.findByIdAndUpdate(req.params.id, {
-            $set: {
-                teamName: teamName,
-                participant1: participant1,
-            }
-        });
-    }
     res.redirect('/hackReg');
 });
 
