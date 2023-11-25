@@ -71,7 +71,7 @@ router.get('/', async (req,res) => {
     //     canView = true
     // }
 
-    res.render('hackSubmission', {error: error, reqTeam: reqTeam, canSub: canSub, reqId: reqID, user: req.user, reqHack: reqHack, canView: canView});
+    res.render('hackSubmission', {error: error, reqTeam: reqTeam, canSub: canSub, reqId: reqID, user: req.user, reqHack: reqHack, canView: canView, isAdmin: reqTeam.teamAdmin === req.user.username});
 })
 
 const cpUpload = upload.fields([{ name: 'env', maxCount: 1 }, { name: 'thumbnail', maxCount: 1 }])
