@@ -10,7 +10,7 @@ router.get('/', async (req,res) => {
         res.render('admin', {username: req.user.fname, user: req.user, hackSubmissions: hackSubmissions})
     }
     else {
-        res.redirect('/');
+        res.redirect('/home');
     }
 });
 
@@ -23,7 +23,7 @@ router.get('/submissions/:id', async (req,res) => {
         res.render('submission', {submission: reqSub, reqTeam: reqTeam});
     }
     else {
-        res.redirect('/');
+        res.redirect('/home');
     }
 });
 
@@ -40,7 +40,7 @@ router.post('/rank/:id', async (req,res) => {
         res.redirect('/admin/submissions/'+req.params.id);
     }
     else {
-        res.redirect('/');
+        res.redirect('/home');
     }
 });
 

@@ -16,6 +16,11 @@ const teamSchema = new Schema(
             type: Number,
             required: true,
             default: 0
+        },
+        timeExtension: {
+            type: Number,
+            required: true,
+            default: 0
         }
     }
 );

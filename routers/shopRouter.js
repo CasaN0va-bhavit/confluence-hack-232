@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const User = require('../schemas/userSchema')
+const teams = require('../schemas/teamSchema')
 
 router.get('/', async (req, res) => {
     // await User.updateOne({username: req.user.username}, {
@@ -16,6 +17,7 @@ router.get('/:id', async (req, res) => {
     const {id} = req.params
     const currentItems = req.user.items,
     currentCoins = req.user.coins
+    const allTeams = await teams.find({})
     switch (id) {
         case '1':
             console.log('Initializing Buy Power Up 1')
@@ -31,6 +33,17 @@ router.get('/:id', async (req, res) => {
             })
             console.log(await User.findOne({username: req.user.username}))
             console.log("BOUGHT POWER UP 1")
+            for (let i = 0; i < allTeams.length; i++) {
+                if (req.user.username == allTeams[i].participant1 || req.user.username == allTeams[i].participant2 || req.user.username == allTeams[i].participant3 || req.user.username == allTeams[i].participant4 || req.user.username == allTeams[i].teamAdmin) {
+                    const newPoints = allTeams[i].points + 100
+                    await teams.findByIdAndUpdate(allTeams[i].id, {
+                        $set: {
+                            points: newPoints
+                        }
+                    })
+                    console.log("BHAP BSDK")
+                }
+            }
             res.redirect('/shop')
             break;
         case '2':
@@ -47,6 +60,17 @@ router.get('/:id', async (req, res) => {
             })
             console.log(await User.findOne({username: req.user.username}))
             console.log("BOUGHT POWER UP 2")
+            for (let i = 0; i < allTeams.length; i++) {
+                if (req.user.username == allTeams[i].participant1 || req.user.username == allTeams[i].participant2 || req.user.username == allTeams[i].participant3 || req.user.username == allTeams[i].participant4 || req.user.username == allTeams[i].teamAdmin) {
+                    const newPoints = allTeams[i].points + 200
+                    await teams.findByIdAndUpdate(allTeams[i].id, {
+                        $set: {
+                            points: newPoints
+                        }
+                    })
+                    console.log("BHAP BSDK")
+                }
+            }
             res.redirect('/shop')
             break;
         case '3':
@@ -63,6 +87,17 @@ router.get('/:id', async (req, res) => {
             })
             console.log(await User.findOne({username: req.user.username}))
             console.log("BOUGHT POWER UP 3")
+            for (let i = 0; i < allTeams.length; i++) {
+                if (req.user.username == allTeams[i].participant1 || req.user.username == allTeams[i].participant2 || req.user.username == allTeams[i].participant3 || req.user.username == allTeams[i].participant4 || req.user.username == allTeams[i].teamAdmin) {
+                    const newPoints = allTeams[i].points + 300
+                    await teams.findByIdAndUpdate(allTeams[i].id, {
+                        $set: {
+                            points: newPoints
+                        }
+                    })
+                    console.log("BHAP BSDK")
+                }
+            }
             res.redirect('/shop')
             break;
         case '4':
@@ -79,6 +114,17 @@ router.get('/:id', async (req, res) => {
             })
             console.log(await User.findOne({username: req.user.username}))
             console.log("BOUGHT POWER UP 4")
+            for (let i = 0; i < allTeams.length; i++) {
+                if (req.user.username == allTeams[i].participant1 || req.user.username == allTeams[i].participant2 || req.user.username == allTeams[i].participant3 || req.user.username == allTeams[i].participant4 || req.user.username == allTeams[i].teamAdmin) {
+                    const newTimeExtension = allTeams[i].timeExtension + 1
+                    await teams.findByIdAndUpdate(allTeams[i].id, {
+                        $set: {
+                            timeExtension: newTimeExtension
+                        }
+                    })
+                    console.log("BHAP BSDK")
+                }
+            }
             res.redirect('/shop')
             break;
         case '5':
@@ -95,6 +141,17 @@ router.get('/:id', async (req, res) => {
             })
             console.log(await User.findOne({username: req.user.username}))
             console.log("BOUGHT POWER UP 5")
+            for (let i = 0; i < allTeams.length; i++) {
+                if (req.user.username == allTeams[i].participant1 || req.user.username == allTeams[i].participant2 || req.user.username == allTeams[i].participant3 || req.user.username == allTeams[i].participant4 || req.user.username == allTeams[i].teamAdmin) {
+                    const newTimeExtension = allTeams[i].timeExtension + 2
+                    await teams.findByIdAndUpdate(allTeams[i].id, {
+                        $set: {
+                            timeExtension: newTimeExtension
+                        }
+                    })
+                    console.log("BHAP BSDK")
+                }
+            }
             res.redirect('/shop')
             break;
         case '6':
@@ -111,6 +168,17 @@ router.get('/:id', async (req, res) => {
             })
             console.log(await User.findOne({username: req.user.username}))
             console.log("BOUGHT POWER UP 6")
+            for (let i = 0; i < allTeams.length; i++) {
+                if (req.user.username == allTeams[i].participant1 || req.user.username == allTeams[i].participant2 || req.user.username == allTeams[i].participant3 || req.user.username == allTeams[i].participant4 || req.user.username == allTeams[i].teamAdmin) {
+                    const newTimeExtension = allTeams[i].timeExtension + 3
+                    await teams.findByIdAndUpdate(allTeams[i].id, {
+                        $set: {
+                            timeExtension: newTimeExtension
+                        }
+                    })
+                    console.log("BHAP BSDK")
+                }
+            }
             res.redirect('/shop')
             break;
         case 'errLessCoins':

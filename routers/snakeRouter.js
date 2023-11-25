@@ -10,7 +10,7 @@ router.post('/', async (req, res) => {
     const foundUser = await User.findOne({username: req.user.username})
     await User.updateOne({username: req.user.username}, {
         $set: {
-            coins: (Number(score) * 10) + foundUser.coins
+            coins: (Number(score) * 5) + foundUser.coins
         }
     })
     console.log(await User.findOne({username: req.user.username}))

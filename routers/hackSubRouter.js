@@ -29,6 +29,7 @@ router.get('/', async (req,res) => {
     var error = ""
     var flag = false;
     var reqTeam;
+    var canView;
     var canSub = true;
     for (let i = 0; i < allTeams.length; i++) {
         if (req.user.username === allTeams[i].participant1 || req.user.username === allTeams[i].participant2 || req.user.username === allTeams[i].participant3 || req.user.username === allTeams[i].participant4 || req.user.username === allTeams[i].teamAdmin) {
@@ -59,8 +60,9 @@ router.get('/', async (req,res) => {
     } else {
         reqID = "asdasdada"
     }
+    const reqHack = await hacks.findById(reqID) || false
 
-    res.render('hackSubmission', {error: error, reqTeam: reqTeam, canSub: canSub, reqId: reqID, user: req.user});
+    res.render('hackSubmission', {error: error, reqTeam: reqTeam, canSub: canSub, reqId: reqID, user: req.user, reqHack: reqHack});
 })
 
 const cpUpload = upload.fields([{ name: 'env', maxCount: 1 }, { name: 'thumbnail', maxCount: 1 }])
@@ -74,7 +76,7 @@ router.post('/post', cpUpload ,async (req,res) => {
             reqTeam = allTeams[i]
         }
     }
-    if (!req.body.submissionLink || !req.body.gdLink  || !req.files || !req.body.projectName || !req.body.desc) {
+    if (!req.body.submissionLink || !req.body.gdLink  || !req.files.thumbnail || !req.files.env || !req.body.projectName || !req.body.desc) {
         error = "Please enter all the details."
         console.log(req.body.submissionLink, req.body.gdLink, req.body.projectName, req.body.desc)
         res.render('hackSubmission', {error: error, reqTeam: reqTeam, canSub: true, reqId: "dadadaasda", user: req.user});
