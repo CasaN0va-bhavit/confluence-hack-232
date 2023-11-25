@@ -41,7 +41,7 @@ router.get('/', async (req,res) => {
                 console.log("Im not a team admin")
                 error = "Please ask your team admin " + allTeams[i].teamAdmin + " to make a submission."
                 flag = true;
-                canView = true
+                canView = false
             }
         }
     }
