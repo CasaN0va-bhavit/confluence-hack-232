@@ -34,7 +34,7 @@
         </div>
     <% } %>
     <img src="/MacBookAir1.png" class="bg-img" alt="">
-    <header class="nav">
+    <!-- <header class="nav">
         <div class="logo">
             <svg class="logo-img" xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none">
                 <path d="M56 28C56 35.4261 53.05 42.548 47.799 47.799C42.548 53.05 35.4261 56 28 56C20.5739 56 13.452 53.05 8.20101 47.799C2.94999 42.548 0 35.4261 0 28C0 20.5739 2.94999 13.452 8.20101 8.20101C13.452 2.94999 20.5739 0 28 0C35.4261 0 42.548 2.94999 47.799 8.20101C53.05 13.452 56 20.5739 56 28ZM52.0873 28.0019C52.0873 21.6136 49.5495 15.4869 45.0323 10.9696C40.515 6.4524 34.3883 3.91464 28 3.91464C21.6117 3.91464 15.485 6.4524 10.9677 10.9696C6.45048 15.4869 3.91271 21.6136 3.91271 28.0019C3.91271 34.3903 6.45048 40.517 10.9677 45.0342C15.485 49.5514 21.6117 52.0892 28 52.0892C34.3883 52.0892 40.515 49.5514 45.0323 45.0342C49.5495 40.517 52.0873 34.3903 52.0873 28.0019Z" fill="#FF0000"/>
@@ -97,7 +97,8 @@
                     </svg>
                 </li>
         </ul>
-    </header>
+    </header> -->
+    <%- include('./partials/navbar') %>
     <h1 class="heading">CYBER FORGE</h1>
     <p class="coords" id="coords"></p>
     <div class="rectangle" id="rectangle"></div>
@@ -173,94 +174,6 @@
         position: absolute;
         top: 0;
         z-index: -2;
-    }
-    .nav {
-        display: flex;
-        flex-direction: row;
-        width: 90%;
-        align-self: center;
-        margin-top: 2vw;
-        align-items: center;
-        justify-content: space-between;
-    }
-    .logo {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        gap: 1vw;
-    }   
-    .logo-img {
-        aspect-ratio: 1;
-        width: 2.917vw;
-    }
-    .logo-txt {
-        aspect-ratio: initial;
-        width: 13.281vw;
-        height: 1.875vw;
-    }
-    .nav-menu {
-        display: none;
-        height: 2vw;
-        flex-direction: row;
-        align-items: center;
-        border: 1px solid #FF0000;
-        padding: 0px 2vw;
-        justify-content: center;
-        width: fit-content;
-        gap: 1.5vw;
-        margin-left: 8vw;
-        margin-right: -3vw;
-        opacity: 0;
-    }
-    .animation {
-        animation-name: fadeIn;
-        animation-duration: 1s;
-        animation-timing-function: ease;
-        animation-iteration-count: 1;
-        animation-fill-mode: forwards;
-    }
-    .animation2 {
-        animation-name: fadeIn2;
-        animation-duration: 1s;
-        animation-timing-function: ease;
-        animation-iteration-count: 1;
-        animation-fill-mode: forwards;
-    }
-    @keyframes fadeIn {
-        0% {
-            opacity: 0;
-            transform: translateX(2vw);
-        }
-        100% {
-            opacity: 1;
-            transform: translateX(0);    
-        }
-    }
-    @keyframes fadeIn2 {
-        0% {
-            transform: translateY(0vw);
-            /* opacity: 1; */
-            display: flex;
-        }
-        100% {
-            transform: translateY(-2vw);
-            /* opacity: 0;     */
-            display: none;
-        }
-    }
-    .nav-item {
-        color: #ff0000;
-        list-style-type: none;
-        font-family: BlenderProBook;
-        text-decoration: none;
-    }
-    .line {
-        height: 135%;
-        margin-top: -5px;
-        width: 1px;
-        background: #FF0000;
-        transform: rotate(-40deg);
     }
     .heading  {
         margin-left: 5vw;
@@ -427,186 +340,8 @@
         document.getElementById('loadingPercent').innerText = loadedPercent + '%'
     }, 40)
     <% } %>
-    try {
-    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-    let interval = null;
-
-    document.getElementById("special").onmouseover = event => {  
-    let iteration = 0;
     
-    clearInterval(interval);
-    
-    interval = setInterval(() => {
-        event.target.innerText = event.target.innerText
-        .split("")
-        .map((letter, index) => {
-            if(index < iteration) {
-            return event.target.dataset.value[index];
-            }
-        
-            return letters[Math.floor(Math.random() * 26)]
-        })
-        .join("");
-        
-        if(iteration >= event.target.dataset.value.length){ 
-        clearInterval(interval);
-        }
-        
-        iteration += 1 / 3;
-    }, 15);
-    }
-    document.getElementById("special2").onmouseover = event => {  
-    let iteration = 0;
-    
-    clearInterval(interval);
-    
-    interval = setInterval(() => {
-        event.target.innerText = event.target.innerText
-        .split("")
-        .map((letter, index) => {
-            if(index < iteration) {
-            return event.target.dataset.value[index];
-            }
-        
-            return letters[Math.floor(Math.random() * 26)]
-        })
-        .join("");
-        
-        if(iteration >= event.target.dataset.value.length){ 
-        clearInterval(interval);
-        }
-        
-        iteration += 1 / 3;
-    }, 15);
-    }
-    document.getElementById("special3").onmouseover = event => {  
-    let iteration = 0;
-    
-    clearInterval(interval);
-    
-    interval = setInterval(() => {
-        event.target.innerText = event.target.innerText
-        .split("")
-        .map((letter, index) => {
-            if(index < iteration) {
-            return event.target.dataset.value[index];
-            }
-        
-            return letters[Math.floor(Math.random() * 26)]
-        })
-        .join("");
-        
-        if(iteration >= event.target.dataset.value.length){ 
-        clearInterval(interval);
-        }
-        
-        iteration += 1 / 3;
-    }, 15);
-    }
-    document.getElementById("special4").onmouseover = event => {  
-    let iteration = 0;
-    
-    clearInterval(interval);
-    
-    interval = setInterval(() => {
-        event.target.innerText = event.target.innerText
-        .split("")
-        .map((letter, index) => {
-            if(index < iteration) {
-            return event.target.dataset.value[index];
-            }
-        
-            return letters[Math.floor(Math.random() * 26)]
-        })
-        .join("");
-        
-        if(iteration >= event.target.dataset.value.length){ 
-        clearInterval(interval);
-        }
-        
-        iteration += 1 / 3;
-    }, 15);
-    }
-    document.getElementById("special5").onmouseover = event => {  
-    let iteration = 0;
-    
-    clearInterval(interval);
-    
-    interval = setInterval(() => {
-        event.target.innerText = event.target.innerText
-        .split("")
-        .map((letter, index) => {
-            if(index < iteration) {
-            return event.target.dataset.value[index];
-            }
-        
-            return letters[Math.floor(Math.random() * 26)]
-        })
-        .join("");
-        
-        if(iteration >= event.target.dataset.value.length){ 
-        clearInterval(interval);
-        }
-        
-        iteration += 1 / 3;
-    }, 15);
-    }
-    document.getElementById("special6").onmouseover = event => {  
-    let iteration = 0;
-    
-    clearInterval(interval);
-    
-    interval = setInterval(() => {
-        event.target.innerText = event.target.innerText
-        .split("")
-        .map((letter, index) => {
-            if(index < iteration) {
-            return event.target.dataset.value[index];
-            }
-        
-            return letters[Math.floor(Math.random() * 26)]
-        })
-        .join("");
-        
-        if(iteration >= event.target.dataset.value.length){ 
-        clearInterval(interval);
-        }
-        
-        iteration += 1 / 3;
-    }, 15);
-    }
-    document.getElementById("special7").onmouseover = event => {  
-    let iteration = 0;
-    
-    clearInterval(interval);
-    
-    interval = setInterval(() => {
-        event.target.innerText = event.target.innerText
-        .split("")
-        .map((letter, index) => {
-            if(index < iteration) {
-            return event.target.dataset.value[index];
-            }
-        
-            return letters[Math.floor(Math.random() * 26)]
-        })
-        .join("");
-        
-        if(iteration >= event.target.dataset.value.length){ 
-        clearInterval(interval);
-        }
-        
-        iteration += 1 / 3;
-    }, 15);
-    }
-} catch (e) {}
     window.addEventListener('mousemove', function(event) {
-        const navMenuRect = document.getElementById('navmenu').getBoundingClientRect();
-        if (navMenuRect.left >= event.pageX || navMenuRect.right <= event.pageX || navMenuRect.top >= event.pageY|| navMenuRect.bottom <= event.pageY) {
-            console.log("sadasda")
-            hideMenu()
-        }
         if (event.pageY < 30 || event.pageY > screen.height - 115) return;
         var kuchhBhi = (event.pageX / screen.width) * 100
         if (kuchhBhi < 14 || kuchhBhi > 88.5) return;
@@ -627,24 +362,5 @@
         document.getElementById('rectangle2').style.marginLeft = event.pageX + 'px';
         document.getElementById('coords').innerHTML = `${event.pageX}, ${event.pageY}`
     })
-    function showMenu() {
-        document.getElementById('navmenu').className = 'nav-menu animation'
-        document.getElementById('navmenu').style.display = 'flex'
-        document.getElementById('showMenu').style.display = 'none'
-        // document.getElementById('navmenu').style.transform = 'scale(1, 1)'
-    }
-    function hideMenu() {
-        document.getElementById('navmenu').className = 'nav-menu'       
-        document.getElementById('navmenu').style.display = 'none'       
-    document.getElementById('showMenu').style.display = 'block'
-        // document.getElementById('navmenu').style.display = 'none'
-    }
-    const games = () => {
-        if (Math.round(Math.random()) === 1) {
-            window.location.href = '/snake'
-        } else {
-            window.location.href = '/breachProtocol'
-        }
-    };
 </script>
 </html>

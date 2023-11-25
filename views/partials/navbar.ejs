@@ -17,7 +17,7 @@
         </div>
     </a>
     <% if (user) { %><div style="display: flex; align-items: center;">
-        <div style="display: flex;align-items: center; margin-right: 0.3vw;">
+        <div style="display: flex;align-items: center; margin-right: 1vw;">
             <svg style='align-self: center; margin-right: 5px;' xmlns="http://www.w3.org/2000/svg" width="30" height="34" viewBox="0 0 30 34" fill="none">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M29.1717 8.42113L14.5858 0L0 8.42113V25.2634L13.7065 33.1769L13.7059 25.4062C13.706 25.3468 13.6821 25.2896 13.6394 25.2471L9.66649 21.344C9.63919 21.3171 9.60813 21.3124 9.57331 21.3299C7.98927 22.1123 6.33663 22.1647 4.84372 21.2795C2.66784 19.9876 1.85483 17.1337 3.23818 14.9445C4.428 13.0625 6.84143 12.2015 8.98352 13.0625C11.6396 14.1289 12.6922 17.1851 11.2905 19.6351C11.2707 19.67 11.2751 19.7016 11.3038 19.7298L13.6619 22.0489C13.6655 22.0525 13.6701 22.055 13.6752 22.0561C13.6802 22.0571 13.6855 22.0566 13.6902 22.0546C13.695 22.0527 13.6991 22.0494 13.7019 22.0451C13.7029 22.0436 13.7037 22.042 13.7043 22.0403C13.7055 22.0373 13.706 22.034 13.7059 22.0308L13.707 15.5175C13.707 15.49 13.6937 15.4725 13.667 15.4652C10.6822 14.6112 9.26818 11.408 10.8051 8.71325C11.6826 7.17356 13.4602 6.29143 15.2234 6.43039C18.453 6.68516 20.463 10.0012 19.1083 12.9185C18.5171 14.1926 17.4891 15.0452 16.0242 15.4762C16.016 15.4789 16.0119 15.4843 16.0119 15.4923V22.0227C16.0121 22.0283 16.0139 22.0338 16.0172 22.0384C16.0205 22.043 16.025 22.0466 16.0303 22.0487C16.0356 22.0509 16.0414 22.0514 16.0471 22.0504C16.0527 22.0494 16.0579 22.0467 16.062 22.0428L18.4099 19.7338C18.4213 19.7224 18.4286 19.7078 18.431 19.6921C18.4334 19.6764 18.4307 19.6603 18.4233 19.6462C17.7174 18.3452 17.6041 17.0532 18.0833 15.7703C19.4595 12.0837 24.5638 11.6597 26.5442 15.0674C27.7534 17.1499 27.1002 19.8325 25.0779 21.1537C23.5655 22.1425 21.707 22.1808 20.1076 21.3067C20.1009 21.3032 20.0932 21.3019 20.0856 21.303C20.0781 21.3041 20.0711 21.3075 20.0657 21.3128L16.0713 25.24C16.0332 25.2774 16.0119 25.3281 16.0119 25.381L16.0119 32.8612L29.1717 25.2634V8.42113Z" fill="#FF0000"/>
           </svg>
@@ -47,12 +47,12 @@
             <li class="nav-item" style="height: 100%;"><div class="line"></div></li>
             <a class="nav-item" id="special2" data-value="SHOP" href="/shop">SHOP</a>
             <li class="nav-item" style="height: 100%;"><div class="line"></div></li>
+            <a class="nav-item" id="special4" data-value="LEADERBRD" href="/lb">LEADERBRD</a>
+            <li class="nav-item" style="height: 100%;"><div class="line"></div></li>
             <li class="nav-item" id="special5" data-value="GAMES" style="cursor: pointer;" onclick="games()" >GAMES</li>
             <li class="nav-item" style="height: 100%;"><div class="line"></div></li>
             <% } %>
             <a class="nav-item" id="special3" data-value="FAQS" href="/faqs">FAQS</a>
-            <li class="nav-item" style="height: 100%;"><div class="line"></div></li>
-            <a class="nav-item" id="special4" data-value="LEADERBRD" href="/lb">LEADERBRD</a>
             <li class="nav-item" style="height: 100%;"><div class="line"></div></li>
             <li class="nav-item">
                 <svg class="menu-uncollapse" style="margin-top: 0.35vw; opacity: 1 !important;" width="58" height="20" viewBox="0 0 58 20" class="uncollapsed" id="hideMenu" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -426,7 +426,7 @@
         // document.getElementById('navmenu').style.display = 'none'
     }
     const games = () => {
-        if (Math.round(Math.random()) === 1) {
+        if (Math.ceil(Math.random() * 2) === 1) {
             window.location.href = '/snake'
         } else {
             window.location.href = '/breachProtocol'
