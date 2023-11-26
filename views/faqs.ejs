@@ -61,6 +61,7 @@
     .question {
         position: relative;
         width: 100%;
+        z-index: 3;
     }
     .questionRect {
         background-color: white;
@@ -106,7 +107,8 @@
         transform-origin: 0% 0%;
         height: 0px;
         transition: 0.3s;
-        z-index: -1;
+        margin-top: -1px;
+        position: relative;
     }
     .answerKaBeta {
         background-color: #07040f;
