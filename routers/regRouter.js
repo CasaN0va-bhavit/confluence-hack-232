@@ -21,23 +21,6 @@ router.post('/', async (req, res) => {
         return res.render('register', {error: 'The passwords do not match!', user: false})
     }
     if (foundUser) return res.render('register', {error: "A user already exists with this username.", user: false})
-    var mailOptions = {
-        from: process.env.FROM_EMAIL,
-        to: username,
-        subject: "Registration Verification",
-        text: 'Registration Verification',
-        html: ejs.renderFile(__dirname + "/../views/verify.ejs", {
-            fname: fname,
-            lname: lname,
-            username: username,
-            site: process.env.DOMAIN_NAME
-        })
-    };
-    try {
-        await transporter.sendMail(mailOptions);
-    } catch (err) {
-        return res.render('register', {error: "Please enter a correct email.", user: false})
-    }
     const hashedPassword = await bcrypt.hash(password, 10)
     const newUser = new User({
         username: username,
