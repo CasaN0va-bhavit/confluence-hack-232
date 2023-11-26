@@ -36,7 +36,7 @@ router.post('/', async (req, res) => {
     try {
         await transporter.sendMail(mailOptions);
     } catch (err) {
-        return res.render('register', {error: "Please enter a correct email."})
+        return res.render('register', {error: "Please enter a correct email.", user: false})
     }
     const hashedPassword = await bcrypt.hash(password, 10)
     const newUser = new User({
