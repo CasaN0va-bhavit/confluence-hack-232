@@ -1,8 +1,15 @@
+<% if (Number(user.breachCooldown) > new Date()) { %>
+    <script>
+        alert(`You must wait for ${ Math.round(<%= Number(user.breachCooldown - new Date()) %> / 1000 / 60)} more minutes before you can play again.`)
+        window.location.href='/home'
+    </script>
+<% } %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://media.discordapp.net/attachments/1175006936194883635/1178349781102379028/image.png?ex=6575d2c0&is=65635dc0&hm=58fd4042565443e2cccc43fc06369caa8a5294ec0905071aaeb89a35f5909180&=&format=webp&width=465&height=465" type="image/png">
     <title>Breach Protocol</title>
     <style>
         body {

@@ -38,6 +38,16 @@ const userSchema = new Schema(
             type: Boolean, 
             required: true,
             default : false
+        },
+        snakeCooldown: {
+            type: Date,
+            required: true,
+            default: new Date()
+        },
+        breachCooldown: {
+            type: Date,
+            required: true,
+            default: new Date()
         }
     }
 );
