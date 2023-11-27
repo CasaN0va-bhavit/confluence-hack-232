@@ -300,7 +300,7 @@ router.post('/create-team', upload.single('teamPfp'), async (req,res) => {
                 req.user.username, 
                 `You Created the Team ${teamName}`, 
                 `You Created the Team ${teamName}`, 
-                await ejs.renderFile(__dirname + "/../views/adminTeamEmail.ejs", {
+                await ejs.renderFile(__dirname + "/../views/adminEmail.ejs", {
                     teamName: teamName,
                     teamAdmin: req.user.username,
                     participant1: participant1,
