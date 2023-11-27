@@ -10,10 +10,10 @@ router.post('/', async (req, res) => {
     const foundUser = await User.findOne({username: req.user.username})
     await User.updateOne({username: req.user.username}, {
         $set: {
-            coins: (Number(score) * 2) + foundUser.coins
+            coins: (Number(score) * 2) + foundUser.coins,
+            snakeCooldown: new Date().setMinutes(new Date().getMinutes() + 30)
         }
     })
-    console.log(await User.findOne({username: req.user.username}))
 })
 
 module.exports = router
